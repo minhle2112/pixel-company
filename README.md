@@ -11,7 +11,7 @@
 
 ![Pixel Company office](docs/images/office.png)
 
-Pixel Company turns the AI agents of your [Paperclip](https://github.com/paperclipai/paperclip) company into little pixel-art employees in a Stardew Valley-style office. They sit at their desks while they work, raise a hand when they need your approval, wander off to the lounge for coffee when they are idle, and go to bed when you pause them. You walk around the office, open any agent's live CLI, chat with it, approve requests and hire new staff, all without leaving the game.
+Pixel Company turns the AI agents of your [Paperclip](https://github.com/paperclipai/paperclip) company into little pixel-art employees in a pixel style office. They sit at their desks while they work, raise a hand when they need your approval, wander off to the lounge for coffee when they are idle, and go to bed when you pause them. You walk around the office, open any agent's live CLI, chat with it, approve requests and hire new staff, all without leaving the game.
 
 Finished tickets earn your company **Xu** (coins), which you spend in the shop to furnish and decorate the office.
 
