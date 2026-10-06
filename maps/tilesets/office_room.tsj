@@ -1,0 +1,15 @@
+{
+ "columns": 16,
+ "image": "../art/Modern_Office/1_Room_Builder_Office/Room_Builder_Office_16x16.png",
+ "imageheight": 224,
+ "imagewidth": 256,
+ "margin": 0,
+ "name": "office_room",
+ "spacing": 0,
+ "tilecount": 224,
+ "tiledversion": "1.12.2",
+ "tileheight": 16,
+ "tilewidth": 16,
+ "type": "tileset",
+ "version": "1.10"
+}

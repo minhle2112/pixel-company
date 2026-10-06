@@ -1,0 +1,31 @@
+# Kiểm tra app Windows build được (file cài .exe + bản zip) khi đẩy tag dạng v0.1.0, hoặc bấm tay trong tab Actions.
+# Bản này KHÔNG có hình LimeZu (máy chủ GitHub không có gói hình), nên chỉ để kiểm tra, tải ở mục Artifacts.
+# File phát hành thật build trên máy có gói hình: npm run dist:win:art, rồi tải lên trang Releases.
+name: Desktop release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run dist:win
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Pixel Company-windows-no-art
+          path: |
+            release/Pixel Company-Setup-*.exe
+            release/Pixel Company-*-win-x64.zip

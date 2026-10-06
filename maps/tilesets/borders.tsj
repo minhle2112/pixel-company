@@ -1,0 +1,15 @@
+{
+ "columns": 45,
+ "image": "../art/1_Interiors/16x16/Room_Builder_subfiles/Room_Builder_borders_16x16.png",
+ "imageheight": 160,
+ "imagewidth": 720,
+ "margin": 0,
+ "name": "borders",
+ "spacing": 0,
+ "tilecount": 450,
+ "tiledversion": "1.12.2",
+ "tileheight": 16,
+ "tilewidth": 16,
+ "type": "tileset",
+ "version": "1.10"
+}

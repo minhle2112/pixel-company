@@ -1,0 +1,1443 @@
+{
+  "desk": {
+    "top": { "src": ["Modern_Office/Modern_Office_16x16.png", 97, 9, 46, 39], "l": 3, "r": 4, "t": 4, "b": 7 },
+    "chair": {
+      "front": {
+        "parts": [
+          { "src": ["Modern_Office/Modern_Office_16x16.png", 0, 137, 16, 21], "x": -8, "y": -14 }
+        ]
+      },
+      "frontLeather": {
+        "parts": [
+          { "src": ["Modern_Office/Modern_Office_16x16.png", 0, 169, 16, 21], "x": -8, "y": -18 }
+        ]
+      },
+      "back": {
+        "parts": [
+          { "src": ["Modern_Office/Modern_Office_16x16.png", 16, 137, 16, 21], "x": -8, "y": -19 }
+        ]
+      },
+      "backLeather": {
+        "parts": [
+          { "src": ["Modern_Office/Modern_Office_16x16.png", 16, 169, 16, 21], "x": -8, "y": -17 }
+        ]
+      },
+      "side": {
+        "parts": [
+          { "src": ["Modern_Office/3_Modern_Office_Shadowless/Modern_Office_Shadowless_16x16.png", 82, 133, 12, 23], "x": -7, "y": -17 }
+        ]
+      }
+    },
+    "things": [
+      {
+        "id": "pc",
+        "name": "Máy tính",
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 224, 140, 16, 17], "x": -8, "y": -17 }
+            ],
+            "at": [
+              { "x": 22, "y": 23 }
+            ],
+            "screen": [-2, -2, 4, 1]
+          },
+          "back": {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 224, 194, 16, 15], "x": -8, "y": -15 }
+            ],
+            "at": [
+              { "x": 19, "y": 16, "if": ["trophy"] },
+              { "x": 22, "y": 16 }
+            ],
+            "screen": [-6, -13, 12, 7]
+          },
+          "side": {
+            "parts": [
+              { "src": ["Modern_Office/3_Modern_Office_Shadowless/Modern_Office_Shadowless_16x16.png", 241, 193, 15, 17], "x": -7, "y": -17 }
+            ],
+            "at": [
+              { "x": 15, "y": 28 }
+            ]
+          }
+        }
+      },
+      {
+        "id": "keyboard",
+        "name": "Bàn phím",
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["Modern_Office/3_Modern_Office_Shadowless/Modern_Office_Shadowless_16x16.png", 192, 137, 16, 5], "x": -8, "y": -5 }
+            ],
+            "at": [
+              { "x": 31, "y": 6, "if": ["frame", "trophy"] },
+              { "x": 21, "y": 7 }
+            ]
+          },
+          "back": {
+            "parts": [
+              { "src": ["Modern_Office/3_Modern_Office_Shadowless/Modern_Office_Shadowless_16x16.png", 224, 227, 16, 5], "x": -8, "y": -5 }
+            ],
+            "at": [
+              { "x": 24, "y": 22 }
+            ]
+          },
+          "side": {
+            "parts": [
+              { "src": ["Modern_Office/3_Modern_Office_Shadowless/Modern_Office_Shadowless_16x16.png", 242, 157, 7, 3], "x": -3, "y": -3 }
+            ],
+            "at": [
+              { "x": 5, "y": 26 }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cup",
+        "name": "Cốc",
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["3_Animated_objects/16x16/spritesheets/animated_coffee.png", 4, 17, 9, 9], "x": -4, "y": -9 }
+            ],
+            "at": [
+              { "x": 40, "y": 7, "if": ["frame", "trophy"] },
+              { "x": 37, "y": 12 }
+            ]
+          },
+          "back": {
+            "parts": [
+              { "src": ["3_Animated_objects/16x16/spritesheets/animated_coffee.png", 4, 17, 9, 9], "x": -4, "y": -9 }
+            ],
+            "at": [
+              { "x": 0, "y": 0, "if": ["plant"], "hide": true },
+              { "x": 8, "y": 18 }
+            ]
+          },
+          "side": {
+            "parts": [
+              { "src": ["3_Animated_objects/16x16/spritesheets/animated_coffee.png", 4, 17, 9, 9], "x": -4, "y": -9 }
+            ],
+            "at": [
+              { "x": 8, "y": 13 }
+            ]
+          }
+        }
+      },
+      {
+        "id": "plant",
+        "name": "Cây để bàn",
+        "icon": "🌱",
+        "price": 25,
+        "level": 2,
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 2, 86, 12, 14], "x": -6, "y": -14 }
+            ],
+            "at": [
+              { "x": 38, "y": 23 }
+            ]
+          },
+          "back": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 2, 86, 12, 14], "x": -6, "y": -14 }
+            ],
+            "at": [
+              { "x": 38, "y": 24 }
+            ]
+          },
+          "side": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 2, 86, 12, 14], "x": -6, "y": -14 }
+            ],
+            "at": [
+              { "x": 12, "y": 40 }
+            ]
+          }
+        }
+      },
+      {
+        "id": "frame",
+        "name": "Khung ảnh",
+        "icon": "🖼️",
+        "price": 20,
+        "level": 2,
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 51, 193, 10, 15], "x": -5, "y": -15 }
+            ],
+            "flip": true,
+            "at": [
+              { "x": 8, "y": 8 }
+            ]
+          },
+          "back": {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 51, 193, 10, 15], "x": -5, "y": -15 }
+            ],
+            "at": [
+              { "x": 11, "y": 24 }
+            ]
+          },
+          "side": {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 51, 193, 10, 15], "x": -5, "y": -15 }
+            ],
+            "at": [
+              { "x": 16, "y": 32 }
+            ]
+          }
+        }
+      },
+      {
+        "id": "lamp",
+        "name": "Đèn bàn",
+        "icon": "💡",
+        "price": 60,
+        "level": 3,
+        "light": [0, -10],
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 211, 984, 9, 13], "x": -4, "y": -13 }
+            ],
+            "at": [
+              { "x": 5, "y": 23 }
+            ]
+          },
+          "back": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 211, 984, 9, 13], "x": -4, "y": -13 }
+            ],
+            "at": [
+              { "x": 5, "y": 16 }
+            ]
+          },
+          "side": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 211, 984, 9, 13], "x": -4, "y": -13 }
+            ],
+            "at": [
+              { "x": 12, "y": 7 }
+            ]
+          }
+        }
+      },
+      {
+        "id": "chair",
+        "name": "Ghế da",
+        "icon": "🪑",
+        "price": 140,
+        "level": 4,
+        "views": {}
+      },
+      {
+        "id": "trophy",
+        "name": "Cúp vàng",
+        "icon": "🏆",
+        "price": 200,
+        "level": 5,
+        "views": {
+          "front": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/6_Music_and_sport_16x16.png", 131, 320, 11, 16], "x": -5, "y": -16 }
+            ],
+            "at": [
+              { "x": 19, "y": 12, "if": ["frame"] },
+              { "x": 7, "y": 12 }
+            ]
+          },
+          "back": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/6_Music_and_sport_16x16.png", 131, 320, 11, 16], "x": -5, "y": -16 }
+            ],
+            "at": [
+              { "x": 38, "y": 16 }
+            ]
+          },
+          "side": {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/6_Music_and_sport_16x16.png", 131, 320, 11, 16], "x": -5, "y": -16 }
+            ],
+            "at": [
+              { "x": 14, "y": 30 }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "plantSmall",
+      "name": "Chậu cây nhỏ",
+      "group": "plant",
+      "price": 30,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 0.8,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 193, 322, 14, 23], "x": -7, "y": -23 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "plantBig",
+      "name": "Chậu cây lá to",
+      "group": "plant",
+      "price": 60,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 1.4,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 213, 345, 22, 30], "x": -11, "y": -30 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "plantTree",
+      "name": "Cây cảnh cao",
+      "group": "plant",
+      "price": 90,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 1.8,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 167, 9, 18, 31], "x": -9, "y": -31 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "plantPalm",
+      "name": "Cây cọ",
+      "group": "plant",
+      "price": 100,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 1.8,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 213, 0, 23, 31], "x": -11, "y": -31 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lampFloor",
+      "name": "Đèn đứng chụp vải",
+      "group": "plant",
+      "price": 60,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 1.6,
+      "light": "lamp",
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 176, 152, 15, 24], "x": -7, "y": -24 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "floorLamp",
+      "name": "Đèn cây hiện đại",
+      "group": "plant",
+      "price": 75,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 1.6,
+      "light": "lamp",
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_79.png", 0, 8, 15, 33], "x": -7, "y": -33 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cabinet",
+      "name": "Tủ thấp",
+      "group": "plant",
+      "price": 80,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png", 19, 245, 27, 23], "x": -13, "y": -23 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bookshelf",
+      "name": "Kệ sách",
+      "group": "plant",
+      "price": 120,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 2,
+      "use": { "kind": "stand", "act": "books" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/5_Classroom_and_library_16x16.png", 67, 210, 27, 40], "x": -13, "y": -40 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bookshelfWide",
+      "name": "Kệ sách lớn",
+      "group": "plant",
+      "price": 180,
+      "w": 3,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 2,
+      "use": { "kind": "stand", "act": "books", "n": 2 },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/5_Classroom_and_library_16x16.png", 0, 210, 48, 40], "x": -24, "y": -40 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "waterCooler",
+      "name": "Bình nước",
+      "group": "plant",
+      "price": 100,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.2,
+      "use": { "kind": "stand", "act": "water" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 193, 248, 14, 30], "x": -7, "y": -30 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "vending",
+      "name": "Máy bán nước",
+      "group": "plant",
+      "price": 220,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.9,
+      "light": "screen",
+      "use": { "kind": "stand", "act": "snack" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png", 224, 116, 19, 43], "x": -9, "y": -43 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "whiteboard",
+      "name": "Bảng trắng",
+      "group": "plant",
+      "price": 110,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.6,
+      "use": { "kind": "stand", "act": "board" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png", 161, 26, 30, 27], "x": -15, "y": -27 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "chalkboard",
+      "name": "Bảng đen",
+      "group": "plant",
+      "price": 90,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.6,
+      "use": { "kind": "stand", "act": "board" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_39.png", 0, 0, 32, 25], "x": -16, "y": -25 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "rugGrey",
+      "name": "Thảm xám",
+      "group": "plant",
+      "price": 70,
+      "w": 3,
+      "d": 2,
+      "mount": "rug",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 131, 208, 39, 32], "x": 0, "y": 0 }
+            ],
+            "fit": { "mode": "stretch", "l": 6, "r": 6, "t": 6, "b": 6 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "rugGreen",
+      "name": "Thảm xanh lá",
+      "group": "plant",
+      "price": 80,
+      "w": 3,
+      "d": 2,
+      "mount": "rug",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 3, 706, 43, 28], "x": 0, "y": 0 }
+            ],
+            "fit": { "mode": "stretch", "l": 6, "r": 6, "t": 6, "b": 6 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "rugBorder",
+      "name": "Thảm viền",
+      "group": "plant",
+      "price": 90,
+      "w": 3,
+      "d": 2,
+      "mount": "rug",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 0, 738, 48, 28], "x": 0, "y": 0 }
+            ],
+            "fit": { "mode": "stretch", "l": 8, "r": 8, "t": 8, "b": 8 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "rugRed",
+      "name": "Thảm đỏ lớn",
+      "group": "plant",
+      "price": 120,
+      "w": 5,
+      "d": 3,
+      "mount": "rug",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 146, 68, 60, 40], "x": 0, "y": 0 }
+            ],
+            "fit": { "mode": "stretch", "l": 14, "r": 14, "t": 12, "b": 12 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "rugBlue",
+      "name": "Thảm xanh lớn",
+      "group": "plant",
+      "price": 120,
+      "w": 5,
+      "d": 3,
+      "mount": "rug",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 146, 116, 60, 40], "x": 0, "y": 0 }
+            ],
+            "fit": { "mode": "stretch", "l": 14, "r": 14, "t": 12, "b": 12 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "corkboard",
+      "name": "Bảng ghim",
+      "group": "wall",
+      "price": 40,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/5_Classroom_and_library_16x16.png", 3, 96, 28, 13], "x": -14, "y": 10 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "painting1",
+      "name": "Tranh phong cảnh",
+      "group": "wall",
+      "price": 50,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 5, 218, 21, 13], "x": -10, "y": 8 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "painting2",
+      "name": "Tranh trừu tượng",
+      "group": "wall",
+      "price": 60,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 34, 219, 28, 13], "x": -14, "y": 8 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "painting3",
+      "name": "Tranh hoa",
+      "group": "wall",
+      "price": 60,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 66, 219, 28, 13], "x": -14, "y": 8 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "moChart",
+      "name": "Biểu đồ tăng trưởng",
+      "group": "wall",
+      "price": 55,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 146, 199, 29, 23], "x": -14, "y": 4 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "moChart2",
+      "name": "Biểu đồ cột",
+      "group": "wall",
+      "price": 55,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["Modern_Office/Modern_Office_16x16.png", 146, 231, 29, 23], "x": -14, "y": 4 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "clock",
+      "name": "Đồng hồ cúc cu",
+      "group": "wall",
+      "price": 130,
+      "w": 1,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["3_Animated_objects/16x16/spritesheets/animated_cuckoo_clock.png", 0, 0, 16, 32], "x": -8, "y": 0, "frames": 10, "speed": 0.05 }
+            ]
+          }
+        ],
+        "shadow": false
+      }
+    },
+    {
+      "id": "tvWall",
+      "name": "TV treo tường",
+      "group": "wall",
+      "price": 250,
+      "w": 2,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "light": "screen",
+      "use": { "kind": "watch", "act": "tv" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 162, 472, 29, 20], "x": -14, "y": 6 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fame",
+      "name": "Bảng vinh danh",
+      "group": "wall",
+      "price": 300,
+      "w": 6,
+      "d": 0,
+      "mount": "wall",
+      "turn": "none",
+      "h": 0,
+      "art": { "code": "fame" }
+    },
+    {
+      "id": "sofa",
+      "name": "Sofa xám",
+      "group": "lounge",
+      "price": 240,
+      "w": 3,
+      "d": 2,
+      "mount": "floor",
+      "turn": "four",
+      "h": 0.8,
+      "use": { "kind": "seat", "n": 2, "gap": 0.76, "act": "sofa" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 48, 5, 48, 27], "x": -24, "y": -27 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 121, 70, 22, 42], "x": -11, "y": -46 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 112, 128, 48, 27], "x": -24, "y": -27 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 145, 70, 22, 41], "x": -11, "y": -46 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "armRed",
+      "name": "Ghế bành đỏ",
+      "group": "lounge",
+      "price": 100,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "four",
+      "h": 0.8,
+      "use": { "kind": "seat", "n": 1, "gap": 0, "act": "sofa" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 102, 563, 20, 24], "x": -10, "y": -24 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 75, 564, 19, 27], "x": -9, "y": -27 }
+            ],
+            "front": 7
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 101, 627, 22, 19], "x": -11, "y": -19 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 34, 628, 19, 27], "x": -9, "y": -27 }
+            ],
+            "front": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "armBlue",
+      "name": "Ghế bành xanh",
+      "group": "lounge",
+      "price": 100,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "four",
+      "h": 0.8,
+      "use": { "kind": "seat", "n": 1, "gap": 0, "act": "sofa" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 102, 531, 20, 24], "x": -10, "y": -24 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 75, 532, 19, 27], "x": -9, "y": -27 }
+            ],
+            "front": 7
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 101, 595, 22, 19], "x": -11, "y": -19 }
+            ]
+          },
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 34, 596, 19, 27], "x": -9, "y": -27 }
+            ],
+            "front": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "coffeeTable",
+      "name": "Bàn trà",
+      "group": "lounge",
+      "price": 70,
+      "w": 3,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.4,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 85, 104, 38, 21], "x": -19, "y": -21 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "meetingTable",
+      "name": "Bàn họp",
+      "group": "lounge",
+      "price": 300,
+      "w": 4,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.75,
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png", 11, 27, 60, 34], "x": 0, "y": -2 }
+            ],
+            "fit": { "mode": "repeat", "l": 10, "r": 12, "t": 6, "b": 12, "dh": 3 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "meetingChair",
+      "name": "Ghế họp",
+      "group": "lounge",
+      "price": 35,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "two",
+      "h": 0,
+      "use": { "kind": "seat", "n": 1, "gap": 0, "act": "meeting", "back": true, "sink": 0.2 },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png", 172, 99, 24, 13], "x": -12, "y": -14 }
+            ]
+          },
+          null,
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png", 172, 99, 24, 13], "x": -12, "y": -15 },
+              { "src": ["1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png", 192, 115, 16, 5], "x": -8, "y": -14 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "highTable",
+      "name": "Bàn cao",
+      "group": "lounge",
+      "price": 80,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.05,
+      "use": { "kind": "stand", "act": "snack", "n": 2 },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/12_Kitchen_16x16.png", 145, 274, 30, 14], "x": -15, "y": -14 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "stool",
+      "name": "Ghế đẩu",
+      "group": "lounge",
+      "price": 25,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0,
+      "use": { "kind": "seat", "n": 1, "gap": 0, "act": "stool" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 162, 320, 12, 13], "x": -6, "y": -13 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bench",
+      "name": "Ghế băng",
+      "group": "lounge",
+      "price": 50,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "flip",
+      "h": 0.5,
+      "use": { "kind": "seat", "n": 2, "gap": 0.5, "act": "stool" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png", 1, 256, 30, 16], "x": -15, "y": -16 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "kitCounter",
+      "name": "Tủ bếp",
+      "group": "lounge",
+      "price": 70,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.95,
+      "use": { "kind": "stand", "act": "cook" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_121.png", 2, 6, 29, 14], "x": -14, "y": -14 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "kitSink",
+      "name": "Bồn rửa",
+      "group": "lounge",
+      "price": 100,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.95,
+      "use": { "kind": "stand", "act": "cook" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_124.png", 0, 6, 16, 14], "x": -8, "y": -14 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "kitStove",
+      "name": "Bếp nấu",
+      "group": "lounge",
+      "price": 120,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.95,
+      "use": { "kind": "stand", "act": "cook" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_148.png", 0, 2, 16, 25], "x": -8, "y": -25 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "kitFridge",
+      "name": "Tủ lạnh nhỏ",
+      "group": "lounge",
+      "price": 150,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.9,
+      "use": { "kind": "stand", "act": "fridge" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_158.png", 0, 7, 16, 36], "x": -8, "y": -36 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fridge",
+      "name": "Tủ lạnh lớn",
+      "group": "lounge",
+      "price": 220,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.9,
+      "use": { "kind": "stand", "act": "fridge" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/12_Kitchen_16x16.png", 144, 376, 32, 48], "x": -16, "y": -48 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "coffeeBar",
+      "name": "Quầy cà phê",
+      "group": "lounge",
+      "price": 260,
+      "w": 2,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.2,
+      "use": { "kind": "stand", "act": "coffee" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_122.png", 2, 6, 29, 14], "x": -14, "y": -14 },
+              { "src": ["3_Animated_objects/16x16/spritesheets/animated_coffee.png", 0, 0, 16, 32], "x": -15, "y": -37, "frames": 6, "speed": 0.08 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arcade1",
+      "name": "Máy game thùng",
+      "group": "fun",
+      "price": 380,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.6,
+      "light": "screen",
+      "use": { "kind": "stand", "act": "game" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_218.png", 0, 9, 16, 35], "x": -8, "y": -35 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "arcade2",
+      "name": "Máy game đỏ",
+      "group": "fun",
+      "price": 380,
+      "w": 1,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1.6,
+      "light": "screen",
+      "use": { "kind": "stand", "act": "game" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_219.png", 0, 9, 16, 35], "x": -8, "y": -35 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tvStand",
+      "name": "Kệ TV",
+      "group": "fun",
+      "price": 330,
+      "w": 4,
+      "d": 1,
+      "mount": "floor",
+      "turn": "none",
+      "h": 1,
+      "light": "screen",
+      "use": { "kind": "stand", "act": "tv", "n": 2, "dist": 1.3 },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_194.png", 0, 0, 32, 48], "x": -32, "y": -42 },
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_195.png", 0, 0, 32, 48], "x": 0, "y": -42 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pingpong",
+      "name": "Bàn bóng bàn",
+      "group": "fun",
+      "price": 550,
+      "w": 2,
+      "d": 3,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.9,
+      "use": { "kind": "pair", "act": "foos" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_241.png", 7, 3, 33, 52], "x": -16, "y": -52 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pool",
+      "name": "Bàn bi-a",
+      "group": "fun",
+      "price": 750,
+      "w": 3,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.9,
+      "use": { "kind": "pair", "act": "pool" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 72, 409, 48, 38], "x": -24, "y": -38 },
+              { "src": ["1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png", 2, 418, 10, 10], "x": 4, "y": -27 }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bedRed",
+      "name": "Giường chăn đỏ",
+      "group": "bed",
+      "price": 160,
+      "w": 1,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.5,
+      "use": { "kind": "bed", "act": "sleep" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/4_Bedroom_16x16.png", 119, 33, 20, 40], "x": -9, "y": -39 }
+            ],
+            "front": 24
+          }
+        ],
+        "shadow": false
+      }
+    },
+    {
+      "id": "bedBlue",
+      "name": "Giường chăn xanh",
+      "group": "bed",
+      "price": 160,
+      "w": 1,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.5,
+      "use": { "kind": "bed", "act": "sleep" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/4_Bedroom_16x16.png", 118, 81, 20, 40], "x": -9, "y": -39 }
+            ],
+            "front": 24
+          }
+        ],
+        "shadow": false
+      }
+    },
+    {
+      "id": "bedLime",
+      "name": "Giường sọc chanh",
+      "group": "bed",
+      "price": 160,
+      "w": 1,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.5,
+      "use": { "kind": "bed", "act": "sleep" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/4_Bedroom_16x16.png", 135, 385, 20, 40], "x": -9, "y": -39 }
+            ],
+            "front": 24
+          }
+        ],
+        "shadow": false
+      }
+    },
+    {
+      "id": "bedSky",
+      "name": "Giường sọc vàng xanh",
+      "group": "bed",
+      "price": 160,
+      "w": 1,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.5,
+      "use": { "kind": "bed", "act": "sleep" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/4_Bedroom_16x16.png", 167, 385, 20, 40], "x": -9, "y": -39 }
+            ],
+            "front": 24
+          }
+        ],
+        "shadow": false
+      }
+    },
+    {
+      "id": "bedWhite",
+      "name": "Giường sọc trắng",
+      "group": "bed",
+      "price": 160,
+      "w": 1,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.5,
+      "use": { "kind": "bed", "act": "sleep" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/4_Bedroom_16x16.png", 199, 385, 20, 40], "x": -9, "y": -39 }
+            ],
+            "front": 24
+          }
+        ],
+        "shadow": false
+      }
+    },
+    {
+      "id": "bedGreen",
+      "name": "Giường sọc rêu",
+      "group": "bed",
+      "price": 160,
+      "w": 1,
+      "d": 2,
+      "mount": "floor",
+      "turn": "none",
+      "h": 0.5,
+      "use": { "kind": "bed", "act": "sleep" },
+      "art": {
+        "views": [
+          {
+            "parts": [
+              { "src": ["1_Interiors/16x16/Theme_Sorter/4_Bedroom_16x16.png", 231, 386, 20, 40], "x": -9, "y": -39 }
+            ],
+            "front": 24
+          }
+        ],
+        "shadow": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+ "columns": 16,
+ "image": "../art/1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png",
+ "imageheight": 1248,
+ "imagewidth": 256,
+ "margin": 0,
+ "name": "generic",
+ "spacing": 0,
+ "tilecount": 1248,
+ "tiledversion": "1.12.2",
+ "tileheight": 16,
+ "tilewidth": 16,
+ "type": "tileset",
+ "version": "1.10"
+}

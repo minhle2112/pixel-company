@@ -1,0 +1,58 @@
+{
+  "appId": "io.github.minhle2112.pixelcompany",
+  "productName": "Pixel Company",
+  "copyright": "Pixel Company contributors",
+  "electronVersion": "44.5.1",
+  "electronDist": "node_modules/electron/dist",
+  "electronLanguages": [
+    "vi",
+    "en-US"
+  ],
+  "directories": {
+    "app": "build/app",
+    "output": "release"
+  },
+  "files": [
+    "**/*",
+    "!pc-hook.cjs",
+    "!node_modules{,/**/*}"
+  ],
+  "extraResources": [
+    {
+      "from": "build/app/pc-hook.cjs",
+      "to": "pc-hook.cjs"
+    }
+  ],
+  "asar": true,
+  "npmRebuild": false,
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      },
+      {
+        "target": "zip",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "desktop/icon/icon.ico",
+    "artifactName": "PixelCompany-${version}-win-x64.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Pixel Company",
+    "deleteAppDataOnUninstall": false,
+    "installerIcon": "desktop/icon/icon.ico",
+    "uninstallerIcon": "desktop/icon/icon.ico",
+    "artifactName": "PixelCompany-Setup-${version}.${ext}"
+  }
+}

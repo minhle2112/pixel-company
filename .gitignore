@@ -1,0 +1,23 @@
+node_modules
+dist
+!paperclip-plugin/dist
+*.log
+.env*
+!.env.example
+*.tsbuildinfo
+.coopverse/
+build/
+release/
+desktop/icon/preview.png
+desktop/icon/icon-16.png
+desktop/icon/icon-32.png
+
+# Obsidian memory vault (personal, not in repo)
+coopverse momory/
+.obsidian/
+
+# Checkpoint của Tiled MCP
+.tiledmcp/
+
+# Hình LimeZu chép cho Tiled (không được phát tán, không vào repo)
+maps/art/

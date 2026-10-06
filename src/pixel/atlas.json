@@ -1,0 +1,1029 @@
+{
+  "sheets": {
+    "gen": "1_Interiors/16x16/Theme_Sorter/1_Generic_16x16.png",
+    "liv": "1_Interiors/16x16/Theme_Sorter/2_LivingRoom_16x16.png",
+    "cls": "1_Interiors/16x16/Theme_Sorter/5_Classroom_and_library_16x16.png",
+    "mus": "1_Interiors/16x16/Theme_Sorter/6_Music_and_sport_16x16.png",
+    "kit": "1_Interiors/16x16/Theme_Sorter/12_Kitchen_16x16.png",
+    "conf": "1_Interiors/16x16/Theme_Sorter/13_Conference_Hall_16x16.png",
+    "base": "1_Interiors/16x16/Theme_Sorter/14_Basement_16x16.png",
+    "hos": "1_Interiors/16x16/Theme_Sorter/19_Hospital_16x16.png",
+    "floors": "1_Interiors/16x16/Room_Builder_subfiles/Room_Builder_Floors_16x16.png",
+    "walls": "1_Interiors/16x16/Room_Builder_subfiles/Room_Builder_Walls_16x16.png",
+    "coffee": "3_Animated_objects/16x16/spritesheets/animated_coffee.png",
+    "door": "3_Animated_objects/16x16/spritesheets/animated_door_glass_double.png",
+    "fridgeAnim": "3_Animated_objects/16x16/spritesheets/animated_fridge.png",
+    "clock": "3_Animated_objects/16x16/spritesheets/animated_cuckoo_clock.png",
+    "cat": "3_Animated_objects/16x16/spritesheets/animated_cat.png",
+    "ui": "4_User_Interface_Elements/UI_16x16.png",
+    "s_tvStand": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_194.png",
+    "s_pingpongBig": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_241.png",
+    "s_sofaBackL": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_51.png",
+    "s_sofaBackM": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_52.png",
+    "s_sofaBackR": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_53.png",
+    "s_chalkboard": "1_Interiors/16x16/Theme_Sorter_Singles/5_Classroom_and_Library_Singles/Classroom_and_Library_Singles_39.png",
+    "s_kitCounter": "1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_121.png",
+    "s_kitCounter2": "1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_122.png",
+    "s_kitSink": "1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_124.png",
+    "s_kitStove": "1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_148.png",
+    "s_kitFridge": "1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_158.png",
+    "s_microwave": "1_Interiors/16x16/Theme_Sorter_Singles/12_Kitchen_Singles/Kitchen_Singles_187.png",
+    "s_floorLamp": "1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_79.png",
+    "s_fruitBowl": "1_Interiors/16x16/Theme_Sorter_Singles/2_Living_Room_Singles/Living_Room_Singles_49.png",
+    "s_tvStand2": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_195.png",
+    "s_arcade1": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_218.png",
+    "s_arcade2": "1_Interiors/16x16/Theme_Sorter_Singles/14_Basement_Singles/Basement_Singles_219.png",
+    "mo": "Modern_Office/Modern_Office_16x16.png",
+    "hal": "1_Interiors/16x16/Theme_Sorter/11_Halloween_16x16.png",
+    "jail": "1_Interiors/16x16/Theme_Sorter/18_Jail_16x16.png"
+  },
+  "sprites": {
+    "plantBig": [
+      "liv",
+      213,
+      345,
+      22,
+      30
+    ],
+    "plantTree": [
+      "liv",
+      167,
+      9,
+      18,
+      31
+    ],
+    "plantPalm": [
+      "liv",
+      213,
+      0,
+      23,
+      31
+    ],
+    "plantSmall": [
+      "liv",
+      193,
+      322,
+      14,
+      23
+    ],
+    "plantDesk": [
+      "liv",
+      2,
+      86,
+      12,
+      14
+    ],
+    "bookshelf": [
+      "cls",
+      67,
+      210,
+      27,
+      40
+    ],
+    "bookshelfWide": [
+      "cls",
+      0,
+      210,
+      48,
+      40
+    ],
+    "sofaV": [
+      "liv",
+      57,
+      518,
+      22,
+      58
+    ],
+    "sofaV2": [
+      "liv",
+      121,
+      518,
+      22,
+      58
+    ],
+    "sofaH": [
+      "liv",
+      16,
+      453,
+      48,
+      29
+    ],
+    "armchair": [
+      "base",
+      102,
+      563,
+      20,
+      24
+    ],
+    "pingpong": [
+      "base",
+      16,
+      195,
+      24,
+      45
+    ],
+    "coffeeTable": [
+      "gen",
+      85,
+      104,
+      38,
+      21
+    ],
+    "highTable": [
+      "kit",
+      145,
+      274,
+      30,
+      14
+    ],
+    "stool": [
+      "base",
+      162,
+      320,
+      12,
+      13
+    ],
+    "meetingTable": [
+      "conf",
+      11,
+      27,
+      60,
+      34
+    ],
+    "chairFront": [
+      "conf",
+      172,
+      99,
+      24,
+      13
+    ],
+    "chairBack": [
+      "conf",
+      192,
+      115,
+      16,
+      5
+    ],
+    "whiteboard": [
+      "conf",
+      161,
+      26,
+      30,
+      27
+    ],
+    "vending": [
+      "conf",
+      224,
+      116,
+      19,
+      43
+    ],
+    "tv": [
+      "base",
+      162,
+      472,
+      29,
+      20
+    ],
+    "crt": [
+      "cls",
+      0,
+      167,
+      16,
+      19
+    ],
+    "laptopBack": [
+      "cls",
+      160,
+      176,
+      16,
+      10
+    ],
+    "trophy": [
+      "mus",
+      131,
+      320,
+      11,
+      16
+    ],
+    "trophyTall": [
+      "mus",
+      195,
+      320,
+      9,
+      24
+    ],
+    "lampFloor": [
+      "liv",
+      176,
+      152,
+      15,
+      24
+    ],
+    "window": [
+      "gen",
+      131,
+      695,
+      25,
+      20
+    ],
+    "rugRed": [
+      "gen",
+      146,
+      68,
+      60,
+      40
+    ],
+    "rugBlue": [
+      "gen",
+      146,
+      116,
+      60,
+      40
+    ],
+    "painting1": [
+      "gen",
+      5,
+      218,
+      21,
+      13
+    ],
+    "painting2": [
+      "gen",
+      34,
+      219,
+      28,
+      13
+    ],
+    "painting3": [
+      "gen",
+      66,
+      219,
+      28,
+      13
+    ],
+    "fridge": [
+      "kit",
+      144,
+      376,
+      32,
+      48
+    ],
+    "cabinet": [
+      "liv",
+      19,
+      245,
+      27,
+      23
+    ],
+    "tableHoney": [
+      "gen",
+      16,
+      593,
+      35,
+      37
+    ],
+    "deskLamp": [
+      "gen",
+      211,
+      984,
+      9,
+      13
+    ],
+    "officeChair": [
+      "gen",
+      67,
+      1008,
+      10,
+      14
+    ],
+    "officeChairLeather": [
+      "gen",
+      67,
+      1024,
+      10,
+      14
+    ],
+    "counterTop": [
+      "kit",
+      112,
+      22,
+      16,
+      42
+    ],
+    "dishRack": [
+      "kit",
+      162,
+      96,
+      13,
+      13
+    ],
+    "tvStand": [
+      "s_tvStand",
+      0,
+      0,
+      32,
+      48
+    ],
+    "pingpongBig": [
+      "s_pingpongBig",
+      7,
+      3,
+      33,
+      52
+    ],
+    "sofaBackL": [
+      "s_sofaBackL",
+      0,
+      0,
+      16,
+      27
+    ],
+    "sofaBackM": [
+      "s_sofaBackM",
+      0,
+      0,
+      16,
+      27
+    ],
+    "sofaBackR": [
+      "s_sofaBackR",
+      0,
+      0,
+      16,
+      27
+    ],
+    "chalkboard": [
+      "s_chalkboard",
+      0,
+      0,
+      32,
+      25
+    ],
+    "kitCounter": [
+      "s_kitCounter",
+      2,
+      6,
+      29,
+      14
+    ],
+    "kitCounter2": [
+      "s_kitCounter2",
+      2,
+      6,
+      29,
+      14
+    ],
+    "kitSink": [
+      "s_kitSink",
+      0,
+      6,
+      16,
+      14
+    ],
+    "kitStove": [
+      "s_kitStove",
+      0,
+      2,
+      16,
+      25
+    ],
+    "kitFridge": [
+      "s_kitFridge",
+      0,
+      7,
+      16,
+      36
+    ],
+    "microwave": [
+      "s_microwave",
+      0,
+      0,
+      16,
+      14
+    ],
+    "floorLamp": [
+      "s_floorLamp",
+      0,
+      8,
+      15,
+      33
+    ],
+    "fruitBowl": [
+      "s_fruitBowl",
+      1,
+      7,
+      14,
+      18
+    ],
+    "rugBorder": [
+      "gen",
+      0,
+      738,
+      48,
+      28
+    ],
+    "rugGreen": [
+      "gen",
+      3,
+      706,
+      43,
+      28
+    ],
+    "bench": [
+      "gen",
+      1,
+      256,
+      30,
+      16
+    ],
+    "bench2": [
+      "gen",
+      33,
+      256,
+      30,
+      16
+    ],
+    "tvStand2": [
+      "s_tvStand2",
+      0,
+      0,
+      32,
+      48
+    ],
+    "corkboard": [
+      "cls",
+      3,
+      96,
+      28,
+      13
+    ],
+    "chalkWall": [
+      "cls",
+      210,
+      86,
+      27,
+      24
+    ],
+    "rugGrey": [
+      "gen",
+      131,
+      208,
+      39,
+      32
+    ],
+    "arcade1": [
+      "s_arcade1",
+      0,
+      9,
+      16,
+      35
+    ],
+    "arcade2": [
+      "s_arcade2",
+      0,
+      9,
+      16,
+      35
+    ],
+    "moDesk": [
+      "mo",
+      97,
+      9,
+      46,
+      39
+    ],
+    "moMonFront": [
+      "mo",
+      224,
+      194,
+      16,
+      15
+    ],
+    "moMonBack": [
+      "mo",
+      224,
+      140,
+      16,
+      17
+    ],
+    "moChairFront": [
+      "mo",
+      0,
+      137,
+      16,
+      21
+    ],
+    "moChairBack": [
+      "mo",
+      16,
+      137,
+      16,
+      21
+    ],
+    "moChairFrontL": [
+      "mo",
+      0,
+      169,
+      16,
+      21
+    ],
+    "moChairBackL": [
+      "mo",
+      16,
+      169,
+      16,
+      21
+    ],
+    "moLamp": [
+      "mo",
+      176,
+      241,
+      15,
+      17
+    ],
+    "moCooler": [
+      "mo",
+      193,
+      248,
+      14,
+      30
+    ],
+    "moChart": [
+      "mo",
+      146,
+      199,
+      29,
+      23
+    ],
+    "moPrinter": [
+      "mo",
+      144,
+      348,
+      15,
+      22
+    ],
+    "moChart2": [
+      "mo",
+      146,
+      231,
+      29,
+      23
+    ],
+    "emHeart": [
+      "ui",
+      96,
+      8,
+      16,
+      18
+    ],
+    "emAsk": [
+      "ui",
+      128,
+      8,
+      16,
+      18
+    ],
+    "emWarn": [
+      "ui",
+      144,
+      8,
+      16,
+      18
+    ],
+    "emError": [
+      "ui",
+      160,
+      8,
+      16,
+      18
+    ],
+    "emSleep": [
+      "ui",
+      176,
+      8,
+      16,
+      18
+    ],
+    "emMusic": [
+      "ui",
+      192,
+      8,
+      16,
+      18
+    ],
+    "emMoon": [
+      "ui",
+      224,
+      8,
+      16,
+      18
+    ],
+    "emAngry": [
+      "ui",
+      256,
+      8,
+      16,
+      18
+    ],
+    "emSad": [
+      "ui",
+      272,
+      8,
+      16,
+      18
+    ],
+    "emStar": [
+      "ui",
+      80,
+      40,
+      16,
+      18
+    ],
+    "emAskGold": [
+      "ui",
+      128,
+      40,
+      16,
+      18
+    ],
+    "emScreen": [
+      "ui",
+      176,
+      40,
+      16,
+      18
+    ],
+    "emNotes": [
+      "ui",
+      192,
+      40,
+      16,
+      18
+    ],
+    "emSun": [
+      "ui",
+      224,
+      40,
+      16,
+      18
+    ],
+    "emDrop": [
+      "ui",
+      240,
+      40,
+      16,
+      18
+    ],
+    "emMail": [
+      "ui",
+      256,
+      40,
+      16,
+      18
+    ],
+    "arrowDown": [
+      "ui",
+      132,
+      131,
+      8,
+      9
+    ],
+    "emDots0": [
+      "ui",
+      0,
+      200,
+      16,
+      18
+    ],
+    "emDots1": [
+      "ui",
+      16,
+      200,
+      16,
+      18
+    ],
+    "emDots2": [
+      "ui",
+      32,
+      200,
+      16,
+      18
+    ],
+    "emDots3": [
+      "ui",
+      48,
+      200,
+      16,
+      18
+    ],
+    "emDots4": [
+      "ui",
+      64,
+      200,
+      16,
+      18
+    ],
+    "emDots5": [
+      "ui",
+      80,
+      200,
+      16,
+      18
+    ],
+    "emDots6": [
+      "ui",
+      96,
+      200,
+      16,
+      18
+    ],
+    "emDots7": [
+      "ui",
+      112,
+      200,
+      16,
+      18
+    ],
+    "webTop1": [
+      "hal",
+      0,
+      38,
+      16,
+      10
+    ],
+    "webTop2": [
+      "hal",
+      16,
+      38,
+      16,
+      10
+    ],
+    "webTop3": [
+      "hal",
+      32,
+      38,
+      16,
+      10
+    ],
+    "webTop4": [
+      "hal",
+      48,
+      38,
+      16,
+      10
+    ],
+    "spider": [
+      "hal",
+      4,
+      66,
+      8,
+      16
+    ],
+    "stain1": [
+      "hal",
+      113,
+      197,
+      14,
+      8
+    ],
+    "stain2": [
+      "hal",
+      130,
+      197,
+      14,
+      9
+    ],
+    "stain3": [
+      "hal",
+      81,
+      392,
+      14,
+      8
+    ],
+    "stain4": [
+      "hal",
+      97,
+      387,
+      14,
+      9
+    ],
+    "boxStack": [
+      "gen",
+      193,
+      946,
+      16,
+      22
+    ],
+    "boxSmall": [
+      "gen",
+      211,
+      947,
+      12,
+      12
+    ],
+    "boxPile": [
+      "gen",
+      209,
+      959,
+      16,
+      16
+    ],
+    "drip1": [
+      "jail",
+      32,
+      38,
+      15,
+      6
+    ],
+    "drip2": [
+      "jail",
+      51,
+      38,
+      12,
+      8
+    ],
+    "drip3": [
+      "jail",
+      24,
+      38,
+      7,
+      9
+    ],
+    "drip4": [
+      "jail",
+      5,
+      38,
+      5,
+      5
+    ],
+    "rat1": [
+      "jail",
+      0,
+      167,
+      10,
+      9
+    ],
+    "rat2": [
+      "jail",
+      22,
+      167,
+      10,
+      9
+    ],
+    "rat3": [
+      "jail",
+      1,
+      183,
+      11,
+      9
+    ],
+    "rat4": [
+      "jail",
+      20,
+      183,
+      11,
+      9
+    ],
+    "paperPile": [
+      "jail",
+      36,
+      168,
+      26,
+      21
+    ],
+    "paperSheet": [
+      "cls",
+      145,
+      174,
+      10,
+      11
+    ],
+    "booksMess": [
+      "cls",
+      194,
+      246,
+      28,
+      23
+    ],
+    "booksSmall1": [
+      "cls",
+      192,
+      304,
+      16,
+      14
+    ],
+    "booksSmall2": [
+      "cls",
+      211,
+      304,
+      10,
+      15
+    ],
+    "deskFrame": [
+      "mo",
+      51,
+      193,
+      10,
+      15
+    ],
+    "poolBalls": [
+      "base",
+      2,
+      418,
+      10,
+      10
+    ],
+    "armRedF": [
+      "base",
+      102,
+      563,
+      20,
+      24
+    ],
+    "armRedL": [
+      "base",
+      75,
+      564,
+      19,
+      27
+    ],
+    "armRedB": [
+      "base",
+      101,
+      627,
+      22,
+      19
+    ],
+    "armRedR": [
+      "base",
+      34,
+      628,
+      19,
+      27
+    ],
+    "armBlueF": [
+      "base",
+      102,
+      531,
+      20,
+      24
+    ],
+    "armBlueL": [
+      "base",
+      75,
+      532,
+      19,
+      27
+    ],
+    "armBlueB": [
+      "base",
+      101,
+      595,
+      22,
+      19
+    ],
+    "armBlueR": [
+      "base",
+      34,
+      596,
+      19,
+      27
+    ],
+    "sofaF": [
+      "base",
+      48,
+      5,
+      48,
+      29
+    ],
+    "sofaB": [
+      "base",
+      112,
+      128,
+      48,
+      27
+    ],
+    "sofaSL": [
+      "base",
+      118,
+      70,
+      26,
+      62
+    ],
+    "sofaSR": [
+      "base",
+      144,
+      70,
+      24,
+      62
+    ],
+    "pool": [
+      "base",
+      72,
+      409,
+      48,
+      38
+    ]
+  }
+}

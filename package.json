@@ -1,0 +1,41 @@
+{
+  "name": "pixel-company",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Văn phòng 3D kiểu game cho các agent Paperclip / A game-like 3D office for Paperclip agents",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/map-markers.mjs && tsc --noEmit && vite build",
+    "map": "node scripts/map-markers.mjs",
+    "house": "node scripts/house-map.mjs",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p desktop",
+    "preview": "vite preview",
+    "desktop:build": "npm run build && node desktop/build.mjs",
+    "desktop": "npm run desktop:build && electron build/app",
+    "dist:win": "npm run desktop:build && node node_modules/electron/install.js && electron-builder --win --config desktop/electron-builder.json --publish never",
+    "dist:win:art": "npm run build && node desktop/build.mjs --with-art && node node_modules/electron/install.js && electron-builder --win --config desktop/electron-builder.json --publish never"
+  },
+  "dependencies": {
+    "@fontsource/vt323": "^5.3.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.1",
+    "pixi.js": "^8.22.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "three": "^0.186.1",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2"
+  }
+}

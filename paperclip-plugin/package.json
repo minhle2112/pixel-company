@@ -1,0 +1,22 @@
+{
+  "name": "paperclip-plugin-coopverse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Paperclip plugin: nút mở văn phòng pixel Pixel Company cho công ty đang xem / button that opens the Pixel Company pixel office",
+  "license": "MIT",
+  "type": "module",
+  "paperclipPlugin": {
+    "manifest": "./dist/manifest.js",
+    "worker": "./dist/worker.js",
+    "ui": "./dist/ui/"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@paperclipai/plugin-sdk": "2026.916.1",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.0"
+  }
+}

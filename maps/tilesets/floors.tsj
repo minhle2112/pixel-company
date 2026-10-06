@@ -1,0 +1,15 @@
+{
+ "columns": 15,
+ "image": "../art/1_Interiors/16x16/Room_Builder_subfiles/Room_Builder_Floors_16x16.png",
+ "imageheight": 640,
+ "imagewidth": 240,
+ "margin": 0,
+ "name": "floors",
+ "spacing": 0,
+ "tilecount": 600,
+ "tiledversion": "1.12.2",
+ "tileheight": 16,
+ "tilewidth": 16,
+ "type": "tileset",
+ "version": "1.10"
+}

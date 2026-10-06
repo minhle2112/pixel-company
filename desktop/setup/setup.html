@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Company</title>
+    <link rel="icon" href="icon.png" />
+    <link rel="stylesheet" href="setup.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="brand">
+        <img src="icon.png" alt="" width="48" height="48" />
+        <div>
+          <h1>Pixel Company</h1>
+          <p class="muted">Văn phòng pixel cho các agent Paperclip · <span id="ver"></span></p>
+        </div>
+      </header>
+
+      <section class="card" id="status" aria-live="polite">
+        <div class="status-row">
+          <span class="dot" id="dot" aria-hidden="true"></span>
+          <b id="msg">Đang chuẩn bị…</b>
+        </div>
+        <p class="muted" id="sub"></p>
+        <div class="actions" id="actions"></div>
+        <details id="logbox" hidden>
+          <summary>Nhật ký Paperclip</summary>
+          <pre id="log"></pre>
+          <button type="button" class="link" id="openlog">Mở file nhật ký</button>
+        </details>
+      </section>
+
+      <section class="card" id="assets">
+        <h2>Gói hình pixel</h2>
+        <p id="assets-msg" class="muted"></p>
+        <div class="actions">
+          <button type="button" id="pick-assets">Chọn thư mục gói hình…</button>
+        </div>
+      </section>
+
+      <form class="card" id="form">
+        <h2>Kết nối Paperclip</h2>
+        <p class="muted">
+          Pixel Company không chứa và không sửa dữ liệu của Paperclip. App chỉ bật đúng bản Paperclip đã cài trên máy, với đúng
+          thư mục dữ liệu của bạn, và chỉ tắt Paperclip nếu chính app đã bật nó.
+        </p>
+
+        <label class="field">
+          <span>Địa chỉ Paperclip</span>
+          <input id="url" type="text" spellcheck="false" placeholder="http://127.0.0.1:3100" />
+        </label>
+
+        <fieldset>
+          <legend>Khi Paperclip chưa chạy</legend>
+          <label class="opt"><input type="radio" name="launch" value="auto" />
+            <span><b>Tự bật Paperclip</b> (lệnh <code>paperclipai</code> cài bằng npm). Chưa có thì app cài giúp.</span></label>
+          <label class="opt"><input type="radio" name="launch" value="folder" />
+            <span><b>Tự bật Paperclip trong một thư mục cài riêng</b> (thư mục có <code>node_modules\paperclipai</code>).</span></label>
+          <label class="opt"><input type="radio" name="launch" value="wsl" />
+            <span><b>Tự bật Paperclip trong WSL</b> (Linux trên Windows).</span></label>
+          <label class="opt"><input type="radio" name="launch" value="none" />
+            <span><b>Không tự bật</b>, tôi tự bật Paperclip. App chỉ kết nối.</span></label>
+        </fieldset>
+
+        <div class="field" data-for="folder">
+          <span>Thư mục cài Paperclip</span>
+          <div class="pick"><input id="pcdir" type="text" spellcheck="false" /><button type="button" data-pick="pcdir" data-title="Chọn thư mục cài Paperclip">Chọn…</button></div>
+        </div>
+        <div class="field" data-for="auto folder">
+          <span>Thư mục dữ liệu Paperclip <i class="muted">(không bắt buộc)</i></span>
+          <div class="pick"><input id="datadir" type="text" spellcheck="false" placeholder="Mặc định của Paperclip (~\.paperclip)" /><button type="button" data-pick="datadir" data-title="Chọn thư mục dữ liệu Paperclip">Chọn…</button></div>
+          <small class="muted">Thư mục bạn vẫn truyền cho Paperclip bằng <code>-d</code>. Chọn xong, app tự đọc địa chỉ (cổng) Paperclip trong đó.</small>
+        </div>
+        <label class="field" data-for="wsl">
+          <span>Tên bản WSL</span>
+          <input id="wsl" type="text" spellcheck="false" placeholder="vd Ubuntu (xem bằng lệnh wsl -l)" />
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="primary" id="save">Lưu và kết nối</button>
+          <button type="button" id="demo">Xem bản demo</button>
+        </div>
+      </form>
+
+      <footer class="muted">
+        Hình pixel: LimeZu (<a href="https://limezu.itch.io/moderninteriors" target="_blank" rel="noreferrer">Modern Interiors</a>,
+        <a href="https://limezu.itch.io/modernoffice" target="_blank" rel="noreferrer">Modern Office</a>), không đi kèm app.
+      </footer>
+    </main>
+    <script src="setup.js"></script>
+  </body>
+</html>

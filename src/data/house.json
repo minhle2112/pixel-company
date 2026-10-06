@@ -1,0 +1,185 @@
+{
+  "size": [64, 20],
+  "prices": [300, 500, 700, 1000],
+  "walls": { "north": [0, 22, 3], "tall": [1, 22], "low": [1, 22] },
+  "entrance": 32,
+  "windows": [5, 27, 41, 56],
+  "kanban": [30, 6],
+  "pods": [
+    [36.5, 5.5],
+    [29.5, 5.5],
+    [29.5, 12.5],
+    [36.5, 12.5]
+  ],
+  "lobby": [
+    [36.4, 19.3]
+  ],
+  "rooms": [
+    {
+      "id": "room1",
+      "name": "Phòng agents",
+      "icon": "💻",
+      "blurb": "",
+      "rects": [
+        [22, 0, 43, 19]
+      ],
+      "floor": { "fill": [1, 25], "top": [1, 24] },
+      "kit": [
+        { "item": "corkboard", "c": 1, "r": 0 },
+        { "item": "moChart2", "c": 3, "r": 0 },
+        { "item": "clock", "c": 15, "r": 0 },
+        { "item": "moChart", "c": 16, "r": 0 },
+        { "item": "plantBig", "c": 0, "r": 0 },
+        { "item": "cabinet", "c": 1, "r": 0 },
+        { "item": "waterCooler", "c": 18, "r": 0 },
+        { "item": "plantBig", "c": 21, "r": 0 },
+        { "item": "plantTree", "c": 0, "r": 9 },
+        { "item": "plantTree", "c": 21, "r": 9 },
+        { "item": "plantBig", "c": 0, "r": 19 },
+        { "item": "lampFloor", "c": 1, "r": 19 },
+        { "item": "bookshelf", "c": 3, "r": 19 },
+        { "item": "cabinet", "c": 18, "r": 19 },
+        { "item": "lampFloor", "c": 20, "r": 19 },
+        { "item": "plantBig", "c": 21, "r": 19 }
+      ],
+      "start": true
+    },
+    {
+      "id": "room2",
+      "name": "Phòng lead",
+      "icon": "👔",
+      "blurb": "",
+      "rects": [
+        [0, 0, 20, 8]
+      ],
+      "floor": { "fill": [1, 25] },
+      "kit": [
+        { "item": "rugRed", "c": 8, "r": 1 },
+        { "item": "plantTree", "c": 0, "r": 0 },
+        { "item": "bookshelfWide", "c": 1, "r": 0 },
+        { "item": "cabinet", "c": 7, "r": 0 },
+        { "item": "painting2", "c": 1, "r": 0 },
+        { "item": "moChart", "c": 8, "r": 0 },
+        { "item": "clock", "c": 12, "r": 0 },
+        { "item": "waterCooler", "c": 0, "r": 4 },
+        { "item": "lampFloor", "c": 0, "r": 8 },
+        { "item": "plantSmall", "c": 4, "r": 8 },
+        { "item": "painting3", "c": 15, "r": 0 },
+        { "item": "rugBlue", "c": 14, "r": 2 },
+        { "item": "sofa", "c": 15, "r": 0 },
+        { "item": "coffeeTable", "c": 15, "r": 3 },
+        { "item": "armRed", "c": 15, "r": 5, "rot": 2 },
+        { "item": "armBlue", "c": 17, "r": 5, "rot": 2 },
+        { "item": "plantBig", "c": 13, "r": 0 },
+        { "item": "plantBig", "c": 20, "r": 0 },
+        { "item": "plantBig", "c": 20, "r": 8 }
+      ],
+      "start": true
+    },
+    {
+      "id": "room3",
+      "name": "Phòng họp",
+      "icon": "📊",
+      "blurb": "",
+      "rects": [
+        [0, 10, 20, 19]
+      ],
+      "floor": { "fill": [1, 25], "top": [1, 24] },
+      "kit": [
+        { "item": "meetingTable", "c": 9, "r": 4 },
+        { "item": "meetingChair", "c": 9, "r": 3 },
+        { "item": "meetingChair", "c": 12, "r": 3 },
+        { "item": "meetingChair", "c": 9, "r": 6, "rot": 2 },
+        { "item": "meetingChair", "c": 12, "r": 6, "rot": 2 },
+        { "item": "plantTree", "c": 0, "r": 0 },
+        { "item": "bookshelf", "c": 1, "r": 0 },
+        { "item": "whiteboard", "c": 4, "r": 0 },
+        { "item": "tvStand", "c": 14, "r": 0 },
+        { "item": "waterCooler", "c": 19, "r": 0 },
+        { "item": "plantBig", "c": 20, "r": 0 },
+        { "item": "rugGrey", "c": 3, "r": 5 },
+        { "item": "armRed", "c": 3, "r": 5, "rot": 3 },
+        { "item": "armBlue", "c": 5, "r": 5, "rot": 1 },
+        { "item": "cabinet", "c": 1, "r": 9 },
+        { "item": "plantBig", "c": 0, "r": 9 },
+        { "item": "lampFloor", "c": 3, "r": 9 },
+        { "item": "plantBig", "c": 20, "r": 9 }
+      ],
+      "start": true
+    },
+    {
+      "id": "room4",
+      "name": "Phòng nghỉ",
+      "icon": "🛋️",
+      "blurb": "",
+      "rects": [
+        [45, 0, 63, 8]
+      ],
+      "floor": { "fill": [1, 25], "top": [1, 24] },
+      "kit": [
+        { "item": "plantBig", "c": 0, "r": 0 },
+        { "item": "coffeeBar", "c": 1, "r": 0 },
+        { "item": "waterCooler", "c": 3, "r": 0 },
+        { "item": "kitFridge", "c": 4, "r": 0 },
+        { "item": "painting1", "c": 1, "r": 0 },
+        { "item": "highTable", "c": 3, "r": 3 },
+        { "item": "bookshelfWide", "c": 6, "r": 0 },
+        { "item": "tvStand", "c": 13, "r": 0 },
+        { "item": "clock", "c": 17, "r": 0 },
+        { "item": "plantBig", "c": 18, "r": 0 },
+        { "item": "rugRed", "c": 12, "r": 2 },
+        { "item": "coffeeTable", "c": 13, "r": 3 },
+        { "item": "armRed", "c": 11, "r": 3, "rot": 3 },
+        { "item": "armBlue", "c": 17, "r": 3, "rot": 1 },
+        { "item": "sofa", "c": 13, "r": 5, "rot": 2 },
+        { "item": "plantTree", "c": 18, "r": 8 },
+        { "item": "plantSmall", "c": 0, "r": 8 }
+      ],
+      "start": true,
+      "use": "rest"
+    },
+    {
+      "id": "room5",
+      "name": "Phòng ngủ",
+      "icon": "🛏️",
+      "blurb": "",
+      "rects": [
+        [45, 10, 63, 19]
+      ],
+      "floor": { "fill": [1, 25], "top": [1, 24] },
+      "kit": [
+        { "item": "bedRed", "c": 3, "r": 0 },
+        { "item": "bedBlue", "c": 6, "r": 0 },
+        { "item": "bedLime", "c": 13, "r": 0 },
+        { "item": "bedSky", "c": 16, "r": 0 },
+        { "item": "bedWhite", "c": 13, "r": 8 },
+        { "item": "bedGreen", "c": 16, "r": 8 },
+        { "item": "rugBlue", "c": 12, "r": 4 },
+        { "item": "rugGreen", "c": 3, "r": 6 },
+        { "item": "lampFloor", "c": 1, "r": 0 },
+        { "item": "lampFloor", "c": 18, "r": 4 },
+        { "item": "cabinet", "c": 3, "r": 9 },
+        { "item": "plantBig", "c": 0, "r": 9 },
+        { "item": "plantSmall", "c": 7, "r": 9 }
+      ],
+      "start": true,
+      "use": "sleep"
+    }
+  ],
+  "doors": [
+    [21, 3, 21, 4],
+    [21, 5, 21, 6],
+    [21, 14, 21, 15],
+    [21, 16, 21, 17],
+    [44, 3, 44, 4],
+    [44, 5, 44, 6],
+    [44, 14, 44, 15],
+    [44, 16, 44, 17],
+    [10, 9, 11, 9],
+    [54, 9, 55, 9]
+  ],
+  "partitions": [],
+  "leads": [
+    [10.5, 1.5, "s"]
+  ]
+}
