@@ -13,6 +13,7 @@ contextBridge.exposeInMainWorld('coopDesktop', {
   getSetup: () => ipcRenderer.invoke('setup:get'),
   saveSetup: (patch: unknown) => ipcRenderer.invoke('setup:save', patch),
   pickFolder: (title: string) => ipcRenderer.invoke('pick-folder', title),
+  pickWorkFolder: () => ipcRenderer.invoke('pick-work-folder'),
   connect: () => ipcRenderer.invoke('pc:connect'),
   install: () => ipcRenderer.invoke('pc:install'),
   openApp: (demo: boolean) => ipcRenderer.invoke('open-app', demo),

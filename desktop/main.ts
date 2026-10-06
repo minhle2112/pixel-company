@@ -296,6 +296,13 @@ function setupIpc() {
     const r = await dialog.showOpenDialog(win, { title: String(title || 'Chọn thư mục'), properties: ['openDirectory'] })
     return r.canceled ? null : r.filePaths[0]
   }, true)
+  // Trợ lý: chọn thư mục làm việc cho project (trang game gọi, khác pick-folder của màn hình kết nối)
+  handle('pick-work-folder', async () => {
+    if (!win) return null
+    const r = await dialog.showOpenDialog(win, { title: 'Chọn thư mục bạn muốn làm việc', properties: ['openDirectory'] })
+    const dir = r.canceled ? '' : localDir(r.filePaths[0] ?? '')
+    return dir || null
+  })
   handle('pc:connect', () => connect(), true)
   handle('pc:install', async () => {
     if (await pc.install()) {

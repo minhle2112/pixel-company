@@ -121,6 +121,9 @@
 .px-name { min-width: 0; max-width: 140px; overflow: hidden; text-overflow: ellipsis; }
 .px-plate.near .px-name { max-width: 220px; }
 .px-plate.cand { border: 1px dashed #ffcf5a; }
+/* Lễ tân (Trợ lý): viền xanh ngọc, khác agent và ứng viên */
+.px-plate.front { border-color: #5fd4c4; }
+.px-plate.front .px-name { color: #9df0e4; }
 .px-plate-row { display: flex; align-items: center; justify-content: center; gap: 3px; }
 .px-dot { width: 5px; height: 5px; flex: none; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6); }
 .px-lv { color: var(--accent); }

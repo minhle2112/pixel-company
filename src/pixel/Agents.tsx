@@ -11,8 +11,9 @@ import { lifeTick, reactToStatus } from '../life/director'
 import { spotById } from '../life/spots'
 import { clock, useLife } from '../life/store'
 import { agentPos, lobbyPos, player } from '../runtime'
-import { useCoop } from '../store'
-import { LOBBY, type DeskSlot, type World } from '../world/layout'
+import { useAssistant } from '../data/assistant'
+import { ASSISTANT_ID, useCoop } from '../store'
+import { LOBBY, RECEPTION, type DeskSlot, type World } from '../world/layout'
 import { sprite, type SpriteName } from './assets'
 import { charSheet, frameAt, partsKey, type Anim, type CharSheet, type Parts } from './chars'
 import { dirOf, px, py, type Dir } from './geom'
@@ -470,6 +471,78 @@ function PixelCandidate({ agent, spot }: { agent: Agent; spot: (typeof LOBBY)[nu
   )
 }
 
+/**
+ * Lễ tân = Trợ lý: đứng cố định bên trái cửa vào. Bấm E / bấm chuột / phím L để chat.
+ * Bong bóng: thẻ chờ duyệt (?) > câu trả lời chưa đọc (phong bì) > đang soạn trả lời (màn hình).
+ */
+function PixelReceptionist() {
+  const spot = RECEPTION
+  const parts = useParts(ASSISTANT_ID, 'Lễ tân', false)
+  const sheet = useSheet(parts)
+  const feet = useRef<HTMLDivElement>(null)
+  const badge = useAssistant((s): SpriteName | null =>
+    Object.values(s.proposals).some((p) => p.status === 'pending' || p.status === 'waiting') ? 'emAskGold' : s.unread ? 'emMail' : s.busy ? 'emScreen' : null)
+  const badgeRef = useRef(badge)
+  badgeRef.current = badge
+
+  useEffect(() => {
+    const v = makeBody()
+    if (!v) return
+    agentPos.set(ASSISTANT_ID, { x: spot.x, z: spot.z })
+    const phase = Math.random() * 10
+    const tick: Tick = (_dt, t) => {
+      const pd = Math.hypot(player.x - spot.x, player.z - spot.z)
+      const sh = sheet.current
+      // Bạn lại gần thì quay sang nhìn, không thì xem giấy tờ
+      const fr: [Anim, Dir, number] = pd < LOOK_DIST
+        ? ['idle', dirOf(Math.atan2(player.x - spot.x, player.z - spot.z)), frameAt('idle', t, phase)]
+        : ['read', 'down', frameAt('read', t, phase)]
+      if (sh) v.man.texture = sh.frame(...fr)
+      const X = Math.round(px(spot.x)), Y = Math.round(py(spot.z))
+      v.body.position.set(X, Y)
+      v.body.zIndex = Y
+      personHit(ASSISTANT_ID, X, Y, HEAD, Y)
+      setOutline(v.hl, stage.hover === ASSISTANT_ID && sh ? sh.silhouette(...fr) : null)
+      const b = badgeRef.current
+      v.bubble.visible = !!b
+      if (b) {
+        v.bubble.texture = sprite(b)
+        // Nhún nhẹ cho dễ thấy
+        v.bubble.position.set(X, Y - HEAD + 1 - Math.round(Math.abs(Math.sin(t * 3)) * 2))
+      }
+      placeDom(ASSISTANT_ID, null, feet.current, X, 0, Y + 1)
+      const fe = feet.current
+      const hov = stage.hover === ASSISTANT_ID
+      if (fe && fe.classList.contains('hover') !== hov) fe.classList.toggle('hover', hov)
+    }
+    ticks.add(tick)
+    return () => {
+      ticks.delete(tick)
+      hits.delete(ASSISTANT_ID)
+      v.destroy()
+      agentPos.delete(ASSISTANT_ID)
+      plates.delete(ASSISTANT_ID)
+    }
+  }, [spot])
+
+  const near = useCoop((s) => s.nearId === ASSISTANT_ID)
+  const hover = useCoop((s) => s.hoverId === ASSISTANT_ID)
+  const busy = useAssistant((s) => s.busy)
+  if (!stage.overlay) return null
+  return createPortal(
+    <div className="px-anchor" style={OFFSCREEN} ref={feet}>
+      <div className="px-under">
+        <div className={`px-plate front${near || hover ? ' near' : ''}`}>
+          <div className="px-plate-row"><span className="px-name">🛎️ Lễ tân</span></div>
+          {(near || hover) && <div className="px-sub">{busy ? 'Đang soạn trả lời…' : 'Trợ lý của văn phòng'}</div>}
+          {hover && <div className="px-hint">Bấm chuột hoặc phím L: chat</div>}
+        </div>
+      </div>
+    </div>,
+    stage.overlay,
+  )
+}
+
 /** Toàn bộ người trong văn phòng pixel + đạo diễn đời sống văn phòng */
 export function PixelAgents({ world }: { world: World }) {
   const agents = useCoop((s) => s.agents)
@@ -495,6 +568,7 @@ export function PixelAgents({ world }: { world: World }) {
         .filter((a) => a.status !== 'terminated' && world.seatOf.has(a.id))
         .map((a) => <PixelAgent key={a.id} agent={a} slot={world.seatOf.get(a.id)!} isLead={leadIds.has(a.id)} />)}
       {candidates.map((a, i) => <PixelCandidate key={a.id} agent={a} spot={LOBBY[i]} />)}
+      <PixelReceptionist />
       <PixelLevelFx />
       <PixelSound />
     </>

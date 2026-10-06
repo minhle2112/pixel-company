@@ -15,10 +15,20 @@ export interface Settings {
   /** null = theo giờ Việt Nam; số = xem thử một giờ cố định (0–24) */
   hour: number | null
   zoom: Zoom
+  /** Model của Trợ lý (lễ tân). '' = mặc định của Claude Code */
+  assistantModel: string
 }
 
 const KEY = 'coopverse.settings.v1'
-const DEFAULTS: Settings = { sfx: true, sfxVol: 0.7, music: false, musicVol: 0.5, quality: 'auto', hour: null, zoom: 'near' }
+const DEFAULTS: Settings = { sfx: true, sfxVol: 0.7, music: false, musicVol: 0.5, quality: 'auto', hour: null, zoom: 'near', assistantModel: 'claude-sonnet-5-5' }
+
+/** Model chọn được cho Trợ lý (Claude Code). Muốn rẻ / nhanh: Haiku; lập kế hoạch khó: Opus */
+export const ASSISTANT_MODELS: { id: string; label: string }[] = [
+  { id: 'claude-sonnet-5-5', label: 'Sonnet 5.5' },
+  { id: 'claude-opus-5-5', label: 'Opus 5.5' },
+  { id: 'claude-haiku-4-5', label: 'Haiku 4.5' },
+  { id: '', label: 'Mặc định của Claude Code' },
+]
 
 const vol = (v: unknown, d: number) => (typeof v === 'number' && Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : d)
 const bool = (v: unknown, d: boolean) => (typeof v === 'boolean' ? v : d)
@@ -44,6 +54,7 @@ function load(): Settings {
       s.musicVol = vol(o.musicVol, s.musicVol)
       if (QUALITIES.includes(o.quality as Quality)) s.quality = o.quality as Quality
       if (o.zoom === 'near' || o.zoom === 'far') s.zoom = o.zoom
+      if (ASSISTANT_MODELS.some((m) => m.id === o.assistantModel)) s.assistantModel = o.assistantModel as string
     }
   } catch {
     /* trình duyệt chặn bộ nhớ hoặc JSON hỏng: dùng mặc định */

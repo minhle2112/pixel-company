@@ -795,3 +795,78 @@ a.card:hover { box-shadow: 0 0 0 2px #2c7fc0, 0 4px 12px rgba(0, 0, 0, 0.15); }
   padding: 8px 14px; font-size: 11.5px; line-height: 1.45; color: var(--muted);
   background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
+
+/* Trợ lý (lễ tân): khung chat bên phải, đè lên danh sách nhân sự, chừa minimap; vẫn đi lại được khi mở */
+.as-panel {
+  top: 16px; right: 16px; bottom: 16px; width: min(440px, calc(100vw - 32px)); z-index: 26;
+  display: flex; flex-direction: column; overflow: hidden; pointer-events: auto; background: #0f1724;
+}
+.as-head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.as-title { font-weight: 800; color: #9df0e4; white-space: nowrap; }
+.as-sub { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 12px; }
+.as-model {
+  max-width: 130px; padding: 3px 6px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #0d1420; color: var(--text); font: 12px 'Segoe UI', system-ui, sans-serif;
+}
+.as-icon {
+  width: 28px; height: 28px; border: 0; border-radius: 8px; background: rgba(255, 255, 255, 0.06); color: var(--text);
+  cursor: pointer; font-size: 14px;
+}
+.as-icon:hover:not(:disabled) { background: rgba(255, 255, 255, 0.14); }
+.as-icon:disabled { opacity: 0.4; cursor: default; }
+.as-list { padding: 10px 12px; }
+.as-list .chat-msg { max-width: 92%; }
+.as-intro { margin: 8px 0; }
+.as-intro > .t-btn { margin-top: 8px; }
+.as-suggest { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.as-suggest .t-btn { font-size: 12px; padding: 4px 10px; }
+.as-turn { margin: 6px 0 12px; }
+.as-turn > .chat-meta { margin-top: 2px; }
+.as-tool {
+  display: flex; align-items: baseline; gap: 6px; margin: 3px 0; padding: 2px 8px; max-width: 100%;
+  font: 12px 'Segoe UI', system-ui, sans-serif; color: #8d99ad;
+}
+.as-tool-ic { width: 12px; flex: none; text-align: center; }
+.as-tool.done .as-tool-ic { color: #5fe08a; }
+.as-tool.err .as-tool-ic { color: #ff8a7d; }
+.as-tool-arg {
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #6f7b90;
+  font: 11px 'Cascadia Mono', Consolas, monospace;
+}
+.as-card {
+  margin: 8px 0; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(95, 212, 196, 0.55);
+  background: rgba(95, 212, 196, 0.08); font: 13px/1.5 'Segoe UI', system-ui, sans-serif;
+}
+.as-card.done { border-color: rgba(60, 207, 110, 0.5); background: rgba(60, 207, 110, 0.07); }
+.as-card.rejected { opacity: 0.6; border-style: dashed; border-color: rgba(255, 255, 255, 0.2); background: transparent; }
+.as-card.failed { border-color: rgba(239, 90, 76, 0.6); background: rgba(239, 90, 76, 0.08); }
+.as-card-head { display: flex; align-items: baseline; gap: 8px; }
+.as-card-head b { flex: 1; color: var(--text); }
+.as-card-st { font-size: 11px; color: var(--muted); white-space: nowrap; }
+.as-card ul { margin: 6px 0 0; padding-left: 18px; color: #c4cad6; overflow-wrap: anywhere; }
+.as-card-result { margin-top: 6px; color: #c4cad6; overflow-wrap: anywhere; }
+.as-card.failed .as-card-result { color: #ff8a7d; }
+.as-card.waiting { border-color: rgba(255, 196, 77, 0.6); background: rgba(255, 196, 77, 0.08); }
+.as-card-btns { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.as-card-detail { margin-top: 6px; }
+.as-card-detail summary { cursor: pointer; color: var(--accent); font-size: 12px; }
+.as-card-detail pre {
+  margin: 6px 0 0; max-height: 260px; overflow: auto; padding: 8px; border-radius: 8px; background: #0d1420;
+  color: #c4cad6; white-space: pre-wrap; overflow-wrap: anywhere; font: 12px/1.45 'Cascadia Mono', Consolas, monospace;
+}
+.as-card-fields { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.as-card-fields label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: #c4cad6; }
+.as-card-fields input {
+  padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #0d1420; color: var(--text); font: 13px 'Segoe UI', system-ui, sans-serif;
+}
+.as-card-fields input:focus { outline: none; border-color: var(--accent); }
+.as-card-fields .muted { font-size: 11px; }
+.as-err-btns { margin-top: 8px; }
+.as-folder { display: flex; gap: 6px; margin-bottom: 8px; }
+.as-folder input {
+  flex: 1; min-width: 0; padding: 6px 8px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #0d1420; color: var(--text); font: 13px 'Segoe UI', system-ui, sans-serif;
+}
+.as-folder input:focus { outline: none; border-color: var(--accent); }
+.as-panel .chat-tools { justify-content: flex-start; }

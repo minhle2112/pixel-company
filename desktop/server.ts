@@ -3,6 +3,7 @@ import http, { type IncomingMessage, type ServerResponse } from 'node:http'
 import https from 'node:https'
 import type { Duplex } from 'node:stream'
 import path from 'node:path'
+import { assistantHandler } from '../server/assistant'
 import { coopDataHandler } from '../server/coopData'
 import { paperclipGuard, wsAllowed, type Handler } from '../server/guard'
 import { limezuHandler } from '../server/limezu'
@@ -10,7 +11,7 @@ import { limezuHandler } from '../server/limezu'
 /**
  * Máy chủ nhỏ của app desktop, chỉ nghe trên 127.0.0.1. Làm đúng những việc máy chủ dev của Vite làm:
  * phục vụ bản build (dist/), chuyển /api sang Paperclip qua cùng bộ lọc (server/guard.ts), sổ EXP (/coop),
- * hình LimeZu (/limezu). Thêm /__desktop/ cho màn hình kết nối Paperclip.
+ * hình LimeZu (/limezu), Trợ lý (/coop/assistant). Thêm /__desktop/ cho màn hình kết nối Paperclip.
  *
  * Cổng cố định (5181, bận thì 5182…): localStorage gắn với địa chỉ trang, đổi cổng là mất cài đặt đã lưu.
  */
@@ -135,6 +136,9 @@ export async function startServer(opts: ServerOpts): Promise<Server> {
   const chain: Handler[] = [
     paperclipGuard(isOwnOrigin),
     (req, res, next) => proxyHttp(opts.target())(req, res, next),
+    // Trợ lý trước sổ EXP: coopData trả 403 cho mọi /coop/ nó không biết
+    assistantHandler({ target: opts.target, isOwnOrigin, dir: opts.dataDir, origin: () => `http://127.0.0.1:${port}`,
+      claudeConfigDir: () => process.env.COOPVERSE_CLAUDE_CONFIG_DIR?.trim() || undefined }),
     coopDataHandler({ target: opts.target, isOwnOrigin, dir: opts.dataDir }),
     limezuHandler(opts.assets),
     statics('/__desktop/', opts.setupDir, null),

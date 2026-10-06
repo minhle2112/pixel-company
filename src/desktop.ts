@@ -12,6 +12,8 @@ export interface CoopDesktop {
   importExp: () => Promise<{ ok: boolean; count?: number; canceled?: boolean; error?: string }>
   checkUpdate: () => Promise<{ status: 'new' | 'latest' | 'none' | 'error'; current: string; latest?: string; url?: string }>
   openExternal: (url: string) => Promise<void>
+  /** Hộp chọn thư mục làm việc (Trợ lý). null = huỷ. Bản app cũ chưa có thì undefined */
+  pickWorkFolder?: () => Promise<string | null>
 }
 
 declare global {

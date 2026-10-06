@@ -50,6 +50,8 @@ export function Toolbar() {
   const roomsOpen = useCoop((s) => s.roomsOpen)
   const toggleDeco = useCoop((s) => s.toggleDeco)
   const decoOpen = useDeco((s) => s.open)
+  const assistantOpen = useCoop((s) => s.assistantOpen)
+  const toggleAssistant = useCoop((s) => s.toggleAssistant)
   const tap = (fn: () => void) => () => { unlockAudio(); fn(); uiTick() }
   return (
     <div className="toolbar">
@@ -58,6 +60,9 @@ export function Toolbar() {
       </button>
       <button className={`tb-btn${music ? ' on' : ''}`} onClick={tap(() => set({ music: !music }))} title="Nhạc lofi (phím M)" aria-label="Nhạc lofi" aria-pressed={music} aria-keyshortcuts="M">
         <span aria-hidden>🎵</span>
+      </button>
+      <button className={`tb-btn${assistantOpen ? ' on' : ''}`} onClick={tap(toggleAssistant)} title="Lễ tân: chat với Trợ lý của văn phòng (phím L)" aria-label="Lễ tân" aria-expanded={assistantOpen} aria-keyshortcuts="L">
+        <span aria-hidden>🛎️</span>
       </button>
       <button className="tb-btn" onClick={tap(() => openWardrobe('player'))} title="Tủ đồ (phím C)" aria-label="Tủ đồ" aria-keyshortcuts="C">
         <span aria-hidden>🎨</span>

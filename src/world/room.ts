@@ -62,6 +62,14 @@ const LOBBY_YAW = [Math.PI - 0.2, Math.PI + 0.25]
 export const LOBBY: (Vec2 & { yaw: number })[] = M.lobby.map((p, i) => ({ x: mx(p.x), z: mz(p.y), yaw: LOBBY_YAW[i % 2] }))
 
 /**
+ * Lễ tân (Trợ lý) đứng bên trái cửa vào, đối xứng với chỗ chờ đầu tiên của sảnh qua tâm cửa, mặt nhìn vào văn phòng.
+ * Bản đồ chưa có mốc riêng cho lễ tân nên suy từ cửa + sảnh.
+ */
+const DOOR_PX = M.door.x + M.door.w / 2
+const LOBBY0 = M.lobby[0] ?? { x: DOOR_PX + 3.4 * MAP_PPM, y: M.door.y - 0.35 * MAP_PPM }
+export const RECEPTION: Vec2 & { yaw: number } = { x: mx(2 * DOOR_PX - LOBBY0.x), z: mz(LOBBY0.y), yaw: Math.PI + 0.2 }
+
+/**
  * Bảng ticket treo ở tường bắc (mặt bảng nhìn về hướng nam, +z).
  * Bản pixel nhìn từ trên xuống nghiêng về phía bắc: chỉ thấy được mặt tường bắc.
  */

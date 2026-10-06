@@ -11,6 +11,9 @@ export interface Note { id: number; kind: NoteKind; text: string }
 /** connecting: chưa có dữ liệu · live: đang nhận realtime · offline: mất Paperclip · demo: dữ liệu giả (?demo) */
 export type Conn = 'connecting' | 'live' | 'offline' | 'demo'
 
+/** Id của lễ tân (Trợ lý) trong agentPos / nearId / hoverId: không trùng id agent (UUID) */
+export const ASSISTANT_ID = 'assistant'
+
 const NOTE_MS = 9000
 const MAX_NOTES = 5
 
@@ -53,6 +56,8 @@ interface CoopState {
   /** Tủ đồ đang mở cho ai ('player' = bạn, hoặc id agent) */
   wardrobeId: string | null
   settingsOpen: boolean
+  /** Khung chat với Trợ lý (lễ tân), phím L */
+  assistantOpen: boolean
   /** Bảng mở phòng (phím B): phòng khoá hiện giá, bấm phòng nào để trả Xu mở phòng đó */
   roomsOpen: boolean
   /** Phòng khoá đang chọn (id trong src/world/rooms.ts) */
@@ -96,6 +101,8 @@ interface CoopState {
   openWardrobe: (id?: string) => void
   closeWardrobe: () => void
   toggleSettings: () => void
+  toggleAssistant: () => void
+  openAssistant: () => void
   toggleRooms: () => void
   /** Chế độ trang trí (phím T): cửa hàng, đặt / dời đồ, dời bàn. Trạng thái chi tiết ở src/ui/decoStore.ts */
   toggleDeco: () => void
@@ -135,6 +142,7 @@ export const useCoop = create<CoopState>((set, get) => ({
   using: null,
   wardrobeId: null,
   settingsOpen: false,
+  assistantOpen: false,
   roomsOpen: false,
   roomPick: null,
   inboxOpen: false,
@@ -191,6 +199,7 @@ export const useCoop = create<CoopState>((set, get) => ({
   },
   setHover: (id) => set({ hoverId: id }),
   openAgent: (id) => {
+    if (id === ASSISTANT_ID) return get().openAssistant()
     const { agents, asks, openAsk, openFocus, showToast } = get()
     const a = agents.find((x) => x.id === id)
     if (!a) return
@@ -248,6 +257,12 @@ export const useCoop = create<CoopState>((set, get) => ({
     if (useDeco.getState().open) useDeco.getState().toggle()
     set((s) => ({ settingsOpen: !s.settingsOpen, wardrobeId: null, roomsOpen: false, roomPick: null }))
   },
+  // Khung chat bên phải, không che bản đồ: vẫn đi lại được (gõ chữ thì phím thuộc về ô gõ)
+  toggleAssistant: () => (get().assistantOpen ? set({ assistantOpen: false }) : get().openAssistant()),
+  openAssistant: () => {
+    if (document.pointerLockElement) document.exitPointerLock()
+    set({ assistantOpen: true, focusId: null, boardOpen: false, fameOpen: false, wardrobeId: null, askId: null, inboxOpen: false })
+  },
   // Như cài đặt: bảng nhỏ bên cạnh, vẫn đi lại được
   toggleRooms: () => {
     if (!get().roomsOpen && document.pointerLockElement) document.exitPointerLock()
@@ -276,6 +291,7 @@ export const useCoop = create<CoopState>((set, get) => ({
     else if (s.fameOpen) set({ fameOpen: false })
     else if (s.roomPick) set({ roomPick: null })
     else if (s.inboxOpen) set({ inboxOpen: false })
+    else if (s.assistantOpen) set({ assistantOpen: false })
     else if (s.settingsOpen) set({ settingsOpen: false })
     else if (useDeco.getState().back()) { /* bỏ chỗ đặt thử / món đang cầm / đóng chế độ trang trí */ }
     else if (s.roomsOpen) set({ roomsOpen: false })

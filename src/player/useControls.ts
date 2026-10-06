@@ -58,6 +58,13 @@ export function useControls(stage: RefObject<HTMLDivElement | null>) {
         useCoop.getState().openWardrobe()
         return
       }
+      // L: chat với Trợ lý (lễ tân), ở đâu cũng được
+      if (shortcut && e.code === 'KeyL') {
+        // Khung chat tự đặt con trỏ vào ô gõ: chặn để chữ "l" không lọt vào đó
+        e.preventDefault()
+        useCoop.getState().toggleAssistant()
+        return
+      }
       // B: bảng mở phòng (trả Xu mở phòng khoá)
       if (shortcut && e.code === 'KeyB' && !focused()) {
         useCoop.getState().toggleRooms()

@@ -3,7 +3,8 @@ import { PAPERCLIP_UI } from '../data/paperclip'
 import { switchCompany } from '../data/sync'
 import { leadIdsOf } from '../data/hire'
 import { STATUS_COLOR, STATUS_LABEL } from '../data/types'
-import { useCoop } from '../store'
+import { useAssistantLink } from '../data/assistant'
+import { ASSISTANT_ID, useCoop } from '../store'
 import type { World } from '../world/layout'
 import { itemById } from '../data/catalog'
 import { useExp } from '../data/exp'
@@ -21,6 +22,7 @@ import { KanbanView } from './KanbanView'
 import { Minimap } from './Minimap'
 import { Clock, SettingsPanel, Toolbar } from './Settings'
 import { Terminal } from './Terminal'
+import { AssistantPanel } from './Assistant'
 import { Avatar, Wardrobe } from '../pixel/Wardrobe'
 import { partsOf, usePixelLooks } from '../pixel/look'
 
@@ -175,6 +177,9 @@ export function Hud({ world }: { world: World }) {
   const company = useCoop((s) => s.company)
   const asks = useCoop((s) => s.asks)
   const askId = useCoop((s) => s.askId)
+  const assistantOpen = useCoop((s) => s.assistantOpen)
+  const nearDesk = nearId === ASSISTANT_ID
+  useAssistantLink()
   // Danh sách nhân sự gọn (một dòng mỗi người, chi tiết khi rê chuột) hoặc đầy đủ; nhớ trên trình duyệt
   const [compact, setCompact] = useState(() => { try { return localStorage.getItem('coopverse.rosterFull') !== '1' } catch { return true } })
   const toggleRoster = () => {
@@ -282,6 +287,13 @@ export function Hud({ world }: { world: World }) {
         </div>
       )}
 
+      {nearDesk && !viewing && !assistantOpen && (
+        <div className="prompt">
+          <kbd>E</kbd>
+          <span>Chat với lễ tân (Trợ lý) · ở đâu cũng bấm được <kbd>L</kbd></span>
+        </div>
+      )}
+
       {near && !viewing && (
         <div className="prompt">
           <kbd>E</kbd>
@@ -315,6 +327,7 @@ export function Hud({ world }: { world: World }) {
           <span><kbd>Shift</kbd> chạy</span>
           <span><kbd>E</kbd> hoặc bấm chuột: mở CLI agent / bảng ticket</span>
           <span><kbd>E</kbd> cạnh đồ: ngồi / dùng</span>
+          <span><kbd>L</kbd> lễ tân (Trợ lý)</span>
           <span><kbd>Q</kbd> việc chờ duyệt</span>
           <span><kbd>B</kbd> mở phòng</span>
           <span><kbd>T</kbd> trang trí</span>
@@ -327,6 +340,7 @@ export function Hud({ world }: { world: World }) {
 
       <Minimap world={world} />
       <OfflineCard />
+      {assistantOpen && !viewing && <AssistantPanel />}
       {focused && <Terminal key={focused.id} agent={focused} />}
       {boardOpen && <KanbanView />}
       {fameOpen && <FameView />}
