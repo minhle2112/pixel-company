@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { create } from 'zustand'
+import { ting } from '../audio/engine'
+import { useSettings } from '../settings'
 import { useCoop } from '../store'
 
 /**
@@ -119,6 +121,8 @@ export function useAssistantLink() {
       } else if (d.type === 'patch') {
         const st = useAssistant.getState()
         const fresh = (d.msgs as AsMsg[]).some((m) => m.role === 'assistant' && !m.live && st.messages.find((x) => x.id === m.id)?.live)
+        // Tin mới lúc khung chat đóng (thường là lễ tân tự báo): kêu "ting" một lần
+        if (fresh && !useCoop.getState().assistantOpen && !st.unread) ting('info')
         set({
           messages: merge(st.messages, d.msgs),
           proposals: { ...st.proposals, ...Object.fromEntries((d.proposals as AsProposal[]).map((p) => [p.id, p])) },
@@ -129,6 +133,14 @@ export function useAssistantLink() {
     }
     return () => es.close()
   }, [cid, isDemo])
+
+  // Model + bật / tắt tự báo: server cần biết để chạy lượt tự động khi người dùng không gõ gì
+  const model = useSettings((s) => s.assistantModel)
+  const proactive = useSettings((s) => s.assistantProactive)
+  const live = useAssistant((s) => s.conn === 'live')
+  useEffect(() => {
+    if (live && !isDemo && cid) void post('prefs', { model, proactive })
+  }, [live, isDemo, cid, model, proactive])
 }
 
 // ── Lệnh ──

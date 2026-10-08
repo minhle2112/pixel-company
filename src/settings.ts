@@ -17,10 +17,12 @@ export interface Settings {
   zoom: Zoom
   /** Model của Trợ lý (lễ tân). '' = mặc định của Claude Code */
   assistantModel: string
+  /** Lễ tân tự báo: ticket xong / cần quyết, tóm tắt đầu ngày (mỗi lần báo tốn một lượt hạn mức) */
+  assistantProactive: boolean
 }
 
 const KEY = 'coopverse.settings.v1'
-const DEFAULTS: Settings = { sfx: true, sfxVol: 0.7, music: false, musicVol: 0.5, quality: 'auto', hour: null, zoom: 'near', assistantModel: 'claude-sonnet-5-5' }
+const DEFAULTS: Settings = { sfx: true, sfxVol: 0.7, music: false, musicVol: 0.5, quality: 'auto', hour: null, zoom: 'near', assistantModel: 'claude-sonnet-5-5', assistantProactive: true }
 
 /** Model chọn được cho Trợ lý (Claude Code). Muốn rẻ / nhanh: Haiku; lập kế hoạch khó: Opus */
 export const ASSISTANT_MODELS: { id: string; label: string }[] = [
@@ -55,6 +57,7 @@ function load(): Settings {
       if (QUALITIES.includes(o.quality as Quality)) s.quality = o.quality as Quality
       if (o.zoom === 'near' || o.zoom === 'far') s.zoom = o.zoom
       if (ASSISTANT_MODELS.some((m) => m.id === o.assistantModel)) s.assistantModel = o.assistantModel as string
+      s.assistantProactive = bool(o.assistantProactive, s.assistantProactive)
     }
   } catch {
     /* trình duyệt chặn bộ nhớ hoặc JSON hỏng: dùng mặc định */

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { uiTick, unlockAudio } from '../audio/engine'
+import { useAssistant } from '../data/assistant'
 import { desktop } from '../desktop'
 import { useSettings } from '../settings'
 import { useCoop } from '../store'
@@ -52,6 +53,7 @@ export function Toolbar() {
   const decoOpen = useDeco((s) => s.open)
   const assistantOpen = useCoop((s) => s.assistantOpen)
   const toggleAssistant = useCoop((s) => s.toggleAssistant)
+  const asUnread = useAssistant((s) => s.unread)
   const tap = (fn: () => void) => () => { unlockAudio(); fn(); uiTick() }
   return (
     <div className="toolbar">
@@ -61,7 +63,7 @@ export function Toolbar() {
       <button className={`tb-btn${music ? ' on' : ''}`} onClick={tap(() => set({ music: !music }))} title="Nhạc lofi (phím M)" aria-label="Nhạc lofi" aria-pressed={music} aria-keyshortcuts="M">
         <span aria-hidden>🎵</span>
       </button>
-      <button className={`tb-btn${assistantOpen ? ' on' : ''}`} onClick={tap(toggleAssistant)} title="Lễ tân: chat với Trợ lý của văn phòng (phím L)" aria-label="Lễ tân" aria-expanded={assistantOpen} aria-keyshortcuts="L">
+      <button className={`tb-btn${assistantOpen ? ' on' : ''}${asUnread ? ' dot' : ''}`} onClick={tap(toggleAssistant)} title={asUnread ? 'Lễ tân có tin mới (phím L)' : 'Lễ tân: chat với Trợ lý của văn phòng (phím L)'} aria-label="Lễ tân" aria-expanded={assistantOpen} aria-keyshortcuts="L">
         <span aria-hidden>🛎️</span>
       </button>
       <button className="tb-btn" onClick={tap(() => openWardrobe('player'))} title="Tủ đồ (phím C)" aria-label="Tủ đồ" aria-keyshortcuts="C">
@@ -181,6 +183,13 @@ export function SettingsPanel() {
         ))}
       </div>
       <p className="set-hint">Gần: nhìn rõ người và đồ vật. Xa nhất: thấy nhiều văn phòng nhất. Trình duyệt nhớ mức bạn chọn.</p>
+
+      <div className="set-sec">Lễ tân</div>
+      <label className="set-row set-check">
+        <input type="checkbox" checked={s.assistantProactive} onChange={(e) => set({ assistantProactive: e.target.checked })} />
+        <span>Lễ tân tự báo</span>
+      </label>
+      <p className="set-hint">Khi đang mở game: báo lúc ticket xong hoặc agent cần bạn quyết (kèm gợi ý việc tiếp theo), tóm tắt đầu ngày lần đầu mở game mỗi sáng. Mỗi lần báo là một lượt chat, tốn hạn mức như khi bạn nhắn.</p>
 
       {/* Bản pixel không có mục Đồ hoạ: chất lượng (bóng đổ, khử răng cưa…) chỉ dùng cho bản 3D */}
       <div className="set-sec">Giờ trong văn phòng</div>

@@ -10,9 +10,10 @@ import { actionOf } from './actions'
 import { mcpHandler } from './mcp'
 import { SYSTEM, SYSTEM_VERSION } from './prompt'
 import {
-  folderProblem, liveProjects, overview, pcClient, projectFolder,
+  folderProblem, liveProjects, overview, pcClient, projectFolder, vnTime,
   type Pc, type ProposalDraft, type ToolCtx,
 } from './tools'
+import { scan, vnDay, vnHour, type WatchState } from './watch'
 
 /**
  * Trợ lý (lễ tân) của mỗi văn phòng: một cuộc trò chuyện liền mạch với Claude Code CLI, chạy trên máy này.
@@ -22,6 +23,7 @@ import {
  * - POST /coop/assistant/:cid/stop                         dừng lượt đang chạy
  * - POST /coop/assistant/:cid/reset                        cuộc trò chuyện mới
  * - POST /coop/assistant/:cid/login                        mở cửa sổ Claude Code để đăng nhập
+ * - POST /coop/assistant/:cid/prefs     {model?, proactive?}  model cho lượt tự động, bật / tắt lễ tân tự báo
  * - POST /coop/assistant/:cid/proposals/:pid/(approve|reject|continue)  quyết thẻ đề xuất
  *        approve {values?}: giá trị các ô bảo mật trên thẻ (khoá API…), chỉ dùng một lần, không lưu
  *        continue: thẻ đang chờ người dùng đăng nhập trên web, bấm "Xong rồi"
@@ -62,6 +64,10 @@ interface Chat {
   folders: string[]
   /** Việc xảy ra ngoài cuộc trò chuyện (duyệt / bỏ thẻ), báo cho Trợ lý ở tin kế tiếp */
   events: string[]
+  /** Mốc theo dõi công ty để tự báo (watch.ts) */
+  watch?: WatchState
+  /** Cài đặt từ trang: model (lượt tự động dùng), lễ tân tự báo (mặc định bật) */
+  prefs?: { model?: string; proactive?: boolean }
 }
 
 interface Live {
@@ -73,6 +79,10 @@ interface Live {
   dirtyProps: Set<string>
   flushTimer: ReturnType<typeof setTimeout> | null
   saveTimer: ReturnType<typeof setTimeout> | null
+  /** Quét Paperclip định kỳ khi có trang đang mở */
+  poll: ReturnType<typeof setInterval> | null
+  /** Việc chờ báo trong lượt tự động kế tiếp */
+  auto: { notices: string[]; brief: boolean; timer: ReturnType<typeof setTimeout> | null; last: number }
 }
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
@@ -80,6 +90,14 @@ const MODEL = /^[a-zA-Z0-9._\-[\]]{1,64}$/
 const MAX_MSGS = 300
 const MAX_TEXT = 8000
 const FLUSH_MS = 80
+/** Quét Paperclip tìm việc mới để tự báo */
+const POLL_MS = 30_000
+/** Chờ gom các việc xảy ra gần nhau vào một lượt */
+const SETTLE_MS = 15_000
+/** Tối đa một lượt tự động mỗi 3 phút (mỗi lượt tốn hạn mức) */
+const AUTO_GAP_MS = 3 * 60_000
+/** Tóm tắt đầu ngày từ 5 giờ sáng (giờ VN) */
+const BRIEF_FROM = 5
 
 const newChat = (): Chat => ({ v: 1, sessionId: randomUUID(), started: false, sys: SYSTEM_VERSION, messages: [], proposals: {}, folders: [], events: [] })
 
@@ -104,7 +122,10 @@ async function loadLive(dir: string, cid: string): Promise<Live> {
   for (const p of Object.values(chat.proposals)) if (p.status === 'running') { p.status = 'failed'; p.result = 'Bị ngắt giữa chừng, kiểm tra lại rồi đề xuất lại.' }
   L = lives.get(cid)
   if (L) return L
-  L = { cid, chat, clients: new Set(), turn: null, dirtyMsgs: new Set(), dirtyProps: new Set(), flushTimer: null, saveTimer: null }
+  L = {
+    cid, chat, clients: new Set(), turn: null, dirtyMsgs: new Set(), dirtyProps: new Set(), flushTimer: null, saveTimer: null,
+    poll: null, auto: { notices: [], brief: false, timer: null, last: 0 },
+  }
   lives.set(cid, L)
   return L
 }
@@ -203,19 +224,23 @@ async function readableDirs(pc: Pc, cid: string, picked: string[]) {
   return [...out.values()]
 }
 
-async function turn(opts: AssistantOpts, L: Live, text: string, model: string | undefined) {
+/** Một lượt của Trợ lý. auto: lượt tự động (người dùng không gõ), hiện dòng báo này thay cho tin của người dùng */
+async function turn(opts: AssistantOpts, L: Live, text: string, model: string | undefined, auto?: string) {
   const { dir } = opts
   const chat = L.chat
-  addMsg(dir, L, { role: 'user', parts: [{ k: 'text', text }] })
+  addMsg(dir, L, auto ? { role: 'system', parts: [{ k: 'text', text: auto }] } : { role: 'user', parts: [{ k: 'text', text }] })
+  model ??= chat.prefs?.model
   const brain = findClaude()
   if (!brain.ok) {
     addMsg(dir, L, { role: 'system', parts: [], error: brain.error })
     return
   }
   const msg = addMsg(dir, L, { role: 'assistant', parts: [], live: true })
+  // Giữ chỗ ngay (trước các bước await): tin gửi lúc này / lượt tự động phải chờ, không chạy 2 CLI trên cùng phiên
+  L.turn = { stop: () => {}, msgId: msg.id }
   const pc = pcClient(opts.target())
   const home = homeOf(dir, L.cid)
-  await mkdir(path.join(home, 'memory'), { recursive: true })
+  await mkdir(path.join(home, 'memory'), { recursive: true }).catch(() => { /* CLI sẽ báo lỗi thư mục */ })
 
   let ctx: string
   try { ctx = await overview(pc, L.cid) } catch (e) { ctx = `(Không đọc được Paperclip: ${e instanceof Error ? e.message : e})` }
@@ -288,6 +313,92 @@ async function turn(opts: AssistantOpts, L: Live, text: string, model: string | 
     msg.parts = msg.parts.filter((p) => p.k !== 'text' || p.text.trim())
     touch(dir, L, msg.id)
   }
+}
+
+// ── Tự báo ──
+
+const proactive = (L: Live) => L.chat.prefs?.proactive !== false
+
+/** Quét công ty mỗi POLL_MS khi có trang đang mở (trang đóng hết thì thôi) */
+function startWatch(opts: AssistantOpts, L: Live) {
+  if (L.poll) return
+  const tick = async () => {
+    if (!L.clients.size) {
+      if (L.poll) clearInterval(L.poll)
+      L.poll = null
+      return
+    }
+    try {
+      const { next, notices } = await scan(pcClient(opts.target()), L.cid, L.chat.watch)
+      L.chat.watch = next
+      // Tắt tự báo thì vẫn cập nhật mốc, để lúc bật lại không báo dồn
+      if (proactive(L) && notices.length) {
+        L.auto.notices.push(...notices)
+        scheduleAuto(opts, L, SETTLE_MS)
+      }
+      checkBrief(opts, L)
+      scheduleSave(opts.dir, L)
+    } catch { /* Paperclip tắt: lần sau */ }
+  }
+  L.poll = setInterval(() => void tick(), POLL_MS)
+  void tick()
+}
+
+/** Lần đầu mở game trong ngày (từ 5 giờ sáng): tóm tắt đầu ngày, nếu công ty đã có ticket */
+function checkBrief(opts: AssistantOpts, L: Live) {
+  const w = L.chat.watch
+  const today = vnDay()
+  if (!w || w.day === today || vnHour() < BRIEF_FROM) return
+  w.day = today
+  if (!proactive(L) || !Object.keys(w.issues).length) return
+  L.auto.brief = true
+  scheduleAuto(opts, L, 3000)
+}
+
+function scheduleAuto(opts: AssistantOpts, L: Live, delay: number) {
+  if (L.auto.timer) return
+  const wait = Math.max(delay, L.auto.last + AUTO_GAP_MS - Date.now())
+  L.auto.timer = setTimeout(() => {
+    L.auto.timer = null
+    runAuto(opts, L).catch((e) => addMsg(opts.dir, L, { role: 'system', parts: [], error: String(e) }))
+  }, wait)
+}
+
+async function runAuto(opts: AssistantOpts, L: Live) {
+  if (!L.auto.notices.length && !L.auto.brief) return
+  if (!proactive(L)) {
+    L.auto.notices = []
+    L.auto.brief = false
+    return
+  }
+  // Đang trả lời người dùng: báo sau
+  if (L.turn) return scheduleAuto(opts, L, 20_000)
+  const notices = L.auto.notices.splice(0)
+  const brief = L.auto.brief
+  L.auto.brief = false
+  L.auto.last = Date.now()
+  const list = notices.map((n) => `- ${n}`).join('\n')
+  let prompt: string
+  let shown: string
+  if (brief) {
+    const w = L.chat.watch
+    const since = w?.briefAt ? vnTime(new Date(w.briefAt)) : 'lần trước'
+    if (w) w.briefAt = Date.now()
+    shown = `☀️ Tóm tắt đầu ngày${notices.length ? ` · ${notices.join(' · ')}` : ''}`
+    prompt = [
+      `[Tự động: tóm tắt đầu ngày, người dùng không gõ tin này] Từ ${since} tới giờ.`,
+      notices.length ? `Việc mới:\n${list}` : '',
+      'Xem ticket (list_issues) rồi tóm tắt thật ngắn: việc đã xong, đang làm, đang chờ người dùng quyết; gợi ý 1–3 việc nên làm hôm nay (việc giao được thì đề xuất bằng thẻ). Không có gì mới thì chào một câu là đủ.',
+    ].filter(Boolean).join('\n')
+  } else {
+    shown = `🔔 ${notices.join(' · ')}`
+    prompt = [
+      '[Tự động: Pixel Company báo việc mới, người dùng không gõ tin này]',
+      list,
+      'Báo người dùng thật ngắn (1–3 dòng). Ticket xong / chờ xem lại: đọc kết quả (get_issue) nếu cần; có việc tiếp theo hợp lý thì đề xuất giao bằng thẻ, không có thì thôi. Việc cần quyết: nói họ cần quyết gì (phím Q trong game).',
+    ].join('\n')
+  }
+  await turn(opts, L, prompt, undefined, shown)
 }
 
 /** Duyệt (approve, kèm giá trị ô bảo mật) hoặc làm tiếp sau khi người dùng đăng nhập trên web (cont) */
@@ -407,6 +518,7 @@ export function assistantHandler(opts: AssistantOpts): Handler {
         res.writeHead(200, { 'content-type': 'text/event-stream; charset=utf-8', 'cache-control': 'no-store', connection: 'keep-alive' })
         sse(res, { type: 'state', state: publicState(L) })
         L.clients.add(res)
+        startWatch(opts, L)
         const ping = setInterval(() => res.write(': ping\n\n'), 25_000)
         req.on('close', () => { clearInterval(ping); L.clients.delete(res) })
       }).catch(fail(res))
@@ -434,9 +546,20 @@ export function assistantHandler(opts: AssistantOpts): Handler {
           text ||= `Tôi muốn làm việc ở thư mục ${folder}`
         }
         if (!text) return send(res, 400, { error: 'Tin nhắn trống' })
+        if (model) L.chat.prefs = { ...L.chat.prefs, model }
         send(res, 202, { ok: true })
         turn(opts, L, text, model).catch((e) => addMsg(dir, L, { role: 'system', parts: [], error: String(e) }))
         return
+      }
+
+      if (action === 'prefs') {
+        const p = { ...L.chat.prefs }
+        if (typeof body.model === 'string' && MODEL.test(body.model)) p.model = body.model
+        else if (body.model === '') delete p.model
+        if (typeof body.proactive === 'boolean') p.proactive = body.proactive
+        L.chat.prefs = p
+        scheduleSave(dir, L)
+        return send(res, 200, { ok: true })
       }
 
       if (action === 'login') {
@@ -455,7 +578,7 @@ export function assistantHandler(opts: AssistantOpts): Handler {
       if (action === 'reset') {
         if (L.turn) return send(res, 409, { error: 'Dừng lượt đang chạy trước' })
         const old = L.chat
-        L.chat = { ...newChat(), folders: old.folders }
+        L.chat = { ...newChat(), folders: old.folders, watch: old.watch, prefs: old.prefs }
         addMsg(dir, L, { role: 'system', parts: [{ k: 'text', text: 'Cuộc trò chuyện mới. Trợ lý vẫn nhớ những gì đã ghi vào bộ nhớ.' }] })
         resetAll(L)
         return send(res, 200, { ok: true })

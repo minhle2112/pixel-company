@@ -372,6 +372,13 @@ a.card:hover { box-shadow: 0 0 0 2px #2c7fc0, 0 4px 12px rgba(0, 0, 0, 0.15); }
 }
 .tb-btn:hover { opacity: 1; background: rgba(40, 47, 64, 0.9); }
 .tb-btn.on { opacity: 1; border-color: rgba(242, 181, 68, 0.55); }
+/* Lễ tân có tin mới lúc khung chat đóng */
+.tb-btn { position: relative; }
+.tb-btn.dot { opacity: 1; }
+.tb-btn.dot::after {
+  content: ''; position: absolute; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%;
+  background: #e5534b; box-shadow: 0 0 0 2px var(--panel);
+}
 
 .settings { top: 176px; left: 16px; width: 300px; padding: 12px 14px; pointer-events: auto; z-index: 25; font-size: 13px; }
 .set-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
