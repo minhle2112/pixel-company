@@ -1,7 +1,7 @@
 {
   "name": "pixel-company",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Văn phòng 3D kiểu game cho các agent Paperclip / A game-like 3D office for Paperclip agents",
   "type": "module",
   "scripts": {
